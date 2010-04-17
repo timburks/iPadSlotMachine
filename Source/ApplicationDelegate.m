@@ -13,11 +13,20 @@ ApplicationDelegate *DELEGATE;
 // connection timeouts
 #define TIMEOUT 60
 
+@interface ApplicationDelegate (Internal)
+
+- (void) addExternalDisplay:(UIScreen *) newScreen;
+- (void) startConnection;
+
+@end
+
+
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
 @synthesize motion;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
+@synthesize externalWindow;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -58,6 +67,20 @@ AVAudioPlayer *soundPlayer;
 	
 	[self.window makeKeyAndVisible];
 	
+	// watch for external screens
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(screenDidConnect:)
+												 name:@"UIScreenDidConnectNotification"
+											   object:nil];	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(screenDidDisconnect:)
+												 name:@"UIScreenDidDisconnectNotification"
+											   object:nil];	
+	NSArray *screens = [UIScreen screens];
+	if ([screens count] > 1) {
+		[self addExternalDisplay:[screens objectAtIndex:1]];
+	}
+	
 	// play a sound on startup
 	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StartingGate" ofType:@"wav"]];
 	NSError *error;
@@ -70,6 +93,34 @@ AVAudioPlayer *soundPlayer;
 	return YES;
 }
 
+- (void) screenDidConnect:(NSNotification *) notification {
+	NSLog(@"notification: %@", notification);
+	UIScreen *newScreen = (UIScreen *) notification.object;
+	[self addExternalDisplay:newScreen];
+}
+
+- (void) screenDidDisconnect:(NSNotification *) notification {
+	NSLog(@"notification: %@", notification);
+	UIScreen *oldScreen = (UIScreen *) notification.object;
+	if (externalWindow && (externalWindow.screen == oldScreen)) {
+		self.externalWindow = nil;
+	}
+}
+
+- (void) addExternalDisplay:(UIScreen *) newScreen 
+{
+	NSArray *modes = newScreen.availableModes;
+	NSLog(@"screen modes: %@", modes);
+	newScreen.currentMode = [modes objectAtIndex:0];
+	NSLog(@"selecting mode %@", newScreen.currentMode);
+	
+	self.externalWindow = [[[UIWindow alloc] 
+							initWithFrame:[newScreen applicationFrame]]
+						   autorelease];
+	externalWindow.backgroundColor = [UIColor blueColor];
+	externalWindow.screen = newScreen;
+	[externalWindow makeKeyAndVisible];
+}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
 {
@@ -121,7 +172,7 @@ AVAudioPlayer *soundPlayer;
 	self.session.delegate = self;
 }
 
-- (void)session:(GKSession *)session didReceiveConnectionRequestFromPeer:(NSString *)peerID
+- (void)session:(GKSession *)currentSession didReceiveConnectionRequestFromPeer:(NSString *)peerID
 {
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Received request from" message:peerID delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
@@ -129,10 +180,10 @@ AVAudioPlayer *soundPlayer;
 	[alert show];
 	
 	NSError *error;
-	[session acceptConnectionFromPeer:peerID error:&error];
+	[currentSession acceptConnectionFromPeer:peerID error:&error];
 }
 
-- (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
+- (void)session:(GKSession *)currentSession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
 {
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Peer did change state" 
@@ -150,7 +201,7 @@ AVAudioPlayer *soundPlayer;
 		
 		// handle connections for slave
 		if (state == GKPeerStateAvailable) {
-			[session connectToPeer:peerID withTimeout:TIMEOUT];
+			[currentSession connectToPeer:peerID withTimeout:TIMEOUT];
 		}
 	}
 }

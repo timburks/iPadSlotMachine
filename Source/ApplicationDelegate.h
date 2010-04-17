@@ -19,7 +19,7 @@ typedef enum  {
 
 @class Motion;
 
-@interface ApplicationDelegate : NSObject {
+@interface ApplicationDelegate : NSObject <GKSessionDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
@@ -32,6 +32,9 @@ typedef enum  {
 	NSString *slaveHandleID;
 	NSString *slaveHopperID;
 	NSMutableArray *slaveReels;
+	
+	// external display
+	UIWindow *externalWindow;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -45,6 +48,8 @@ typedef enum  {
 @property (nonatomic, retain) NSString *slaveHandleID;
 @property (nonatomic, retain) NSString *slaveHopperID;
 @property (nonatomic, retain) NSMutableArray *slaveReels;
+
+@property (nonatomic, retain) UIWindow *externalWindow;
 
 @end
 
