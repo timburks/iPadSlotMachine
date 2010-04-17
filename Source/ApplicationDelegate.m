@@ -6,6 +6,7 @@
 //
 
 #import "ApplicationDelegate.h"
+#import "Motion.h"
 
 ApplicationDelegate *DELEGATE;
 
@@ -14,10 +15,12 @@ ApplicationDelegate *DELEGATE;
 
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
+@synthesize motion;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 
 UIAlertView *roleChooserAlert; 
+AVAudioPlayer *soundPlayer;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -36,6 +39,10 @@ UIAlertView *roleChooserAlert;
 	self.window = [[[UIWindow alloc] initWithFrame:mainBounds] autorelease];
 	self.window.backgroundColor = [UIColor blueColor]; // confirm we've got it
 	
+	self.motion = [[[Motion alloc] init] retain];
+    [window addSubview:motion];
+	[self.motion becomeFirstResponder];
+	
 	// display role chooser
 	roleChooserAlert = [[[UIAlertView alloc]
 						 initWithTitle:@"iPad Slot Machine"
@@ -47,8 +54,19 @@ UIAlertView *roleChooserAlert;
 	[roleChooserAlert show];
 	
 	[self.window makeKeyAndVisible];
+
+	// play a sound on startup
+	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StartingGate" ofType:@"wav"]];
+	NSError *error;
+	if (!soundPlayer) {
+		soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+	}
+	[soundPlayer play];
+	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+	
 	return YES;
-}	
+}
+
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
 {
@@ -79,8 +97,8 @@ UIAlertView *roleChooserAlert;
 						  autorelease];
 	[alert show];
 	
-	NSError *perror;
-	[session acceptConnectionFromPeer:peerID error:perror];
+	NSError *error;
+	[session acceptConnectionFromPeer:peerID error:&error];
 }
 
 - (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 

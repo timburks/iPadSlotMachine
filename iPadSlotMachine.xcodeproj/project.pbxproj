@@ -11,6 +11,12 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2235A27711797E5D0099FE99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A27611797E5D0099FE99 /* main.m */; };
 		2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A28111797E980099FE99 /* ApplicationDelegate.m */; };
+		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
+		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
+		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
+		225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */; };
+		225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17D71179ABF10085D2A4 /* AVFoundation.framework */; };
+		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
@@ -22,6 +28,13 @@
 		2235A27611797E5D0099FE99 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2235A28011797E980099FE99 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
 		2235A28111797E980099FE99 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
+		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
+		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
+		225D17AE1179AA5A0085D2A4 /* StartingGate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StartingGate.wav; sourceTree = "<group>"; };
+		225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		225D17D71179ABF10085D2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		225D17DD1179AC030085D2A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		22C1CC481179855B003D1424 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -37,6 +50,9 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */,
+				225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */,
+				225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */,
+				225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,8 +73,19 @@
 				2235A27611797E5D0099FE99 /* main.m */,
 				2235A28011797E980099FE99 /* ApplicationDelegate.h */,
 				2235A28111797E980099FE99 /* ApplicationDelegate.m */,
+				225D177F1179A8B70085D2A4 /* Motion.h */,
+				225D17801179A8B70085D2A4 /* Motion.m */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		225D17A91179AA130085D2A4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				225D17AC1179AA530085D2A4 /* LittleFlips6.wav */,
+				225D17AE1179AA5A0085D2A4 /* StartingGate.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -67,6 +94,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2235A27011797DD70099FE99 /* Source */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				225D17A91179AA130085D2A4 /* Sounds */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -88,6 +116,9 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				22C1CC481179855B003D1424 /* GameKit.framework */,
+				225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */,
+				225D17D71179ABF10085D2A4 /* AVFoundation.framework */,
+				225D17DD1179AC030085D2A4 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,6 +165,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */,
+				225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +179,7 @@
 			files = (
 				2235A27711797E5D0099FE99 /* main.m in Sources */,
 				2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */,
+				225D17811179A8B70085D2A4 /* Motion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

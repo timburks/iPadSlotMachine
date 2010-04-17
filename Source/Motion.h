@@ -1,0 +1,6 @@
+
+@interface Motion : UIView {
+
+}
+
+@end
