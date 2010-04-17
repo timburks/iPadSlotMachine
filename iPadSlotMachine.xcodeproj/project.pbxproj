@@ -23,6 +23,7 @@
 		228DE77B117A391F00E77F61 /* SlotShading.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE777117A391F00E77F61 /* SlotShading.png */; };
 		228DE77C117A391F00E77F61 /* StopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE778117A391F00E77F61 /* StopBar.png */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
+		22E0E3BE117A5BF700A72F62 /* Strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E0E3BD117A5BF700A72F62 /* Strip.png */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		228DE777117A391F00E77F61 /* SlotShading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlotShading.png; sourceTree = "<group>"; };
 		228DE778117A391F00E77F61 /* StopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopBar.png; sourceTree = "<group>"; };
 		22C1CC481179855B003D1424 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		22E0E3BD117A5BF700A72F62 /* Strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strip.png; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				228053BC117A3CE500C66CC8 /* Default.png */,
 				228DE775117A391F00E77F61 /* MachineBackground.png */,
+				22E0E3BD117A5BF700A72F62 /* Strip.png */,
 				228DE776117A391F00E77F61 /* Slot.png */,
 				228DE777117A391F00E77F61 /* SlotShading.png */,
 				228DE778117A391F00E77F61 /* StopBar.png */,
@@ -195,6 +198,7 @@
 				228DE77B117A391F00E77F61 /* SlotShading.png in Resources */,
 				228DE77C117A391F00E77F61 /* StopBar.png in Resources */,
 				228053BD117A3CE500C66CC8 /* Default.png in Resources */,
+				22E0E3BE117A5BF700A72F62 /* Strip.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
