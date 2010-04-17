@@ -6,7 +6,6 @@
 //
 
 #import "ApplicationDelegate.h"
-#import "Motion.h"
 
 ApplicationDelegate *DELEGATE;
 
@@ -66,6 +65,9 @@ AVAudioPlayer *soundPlayer;
 	}
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+	
+	// TODO: Only if we are the handle
+	[motion startMotionDetectionWithDelegate:self];
 	
 	return YES;
 }
@@ -153,6 +155,15 @@ AVAudioPlayer *soundPlayer;
 			[session connectToPeer:peerID withTimeout:TIMEOUT];
 		}
 	}
+}
+
+
+#pragma mark -
+#pragma mark MotionDelegate
+
+- (void)motionTriggered:(id)sender {
+	// TODO: trigger event
+	NSLog(@"HANDLE PULLED!");
 }
 
 

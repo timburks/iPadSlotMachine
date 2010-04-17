@@ -5,6 +5,8 @@
 //  Created by Tim Burks on 4/16/10.
 //
 
+#import "Motion.h"
+
 typedef enum  {
 	SlotMachineApplicationRoleUnknown,
 	SlotMachineApplicationRoleMaster,
@@ -17,9 +19,7 @@ typedef enum  {
 	SlotMachineApplicationRoleMax
 } SlotMachineApplicationRoleType;
 
-@class Motion;
-
-@interface ApplicationDelegate : NSObject {
+@interface ApplicationDelegate : NSObject <MotionDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
