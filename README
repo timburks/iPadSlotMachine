@@ -6,7 +6,40 @@ Aleksey Novicov, and Warren Stringer.
 
 This software is released under the BSD License.
 
+APPLICATION DETAILS
 
+iPadSlotMachine is a multi-iPad slot machine simulator. When the app starts,
+its user is presented with a choice: to create a new machine or to join an
+existing one.
+
+If "Create New" is selected, the app becomes the master controller for the slot machine.
+Instances running on other local iPads may then join the machine. When they do,
+they are assigned roles. Possible roles include:
+
+  Reels. These are the wheels of the slot machine. Initially up to 3 reels will be supported.
+
+  Handle. This device will be swung by its user to start the slot machine. It is likely 
+  that this device will be an iPhone.
+
+  Hopper. This iPad will report the results. In the case of winning spins, it will show 
+  coins or some similar animated reward.
+
+The master controller will have any necessary controls to manage connections, a reset
+button to reset the machine, and test controls to start the machine if the handle is
+unavailable.
+
+The slot machine will support multiple modes of operation. One mode will display
+classical slot machine graphics. Another mode will display digits from 0-9 on each
+reel in a way that allows it to be used to select tickets for raffles. Other modes
+may also be added.
+
+A pull of the handle will send a message to the master, which will in turn launch the reels. 
+Each wheel will spin independently and stop at a random time. We may optionally add "Stop"
+buttons to each reel to allow each reel to be stopped separately. When all wheels have
+stopped, a score or other summary result will be calculated and displayed on the hopper.
+
+Appropriate sounds would be awesome. Audio feedback through the iPad microphone would be
+nice for randomizing or otherwise driving the reels.
 
 =============================================================================================
 Copyright 2010, Slot Machine Team. All rights reserved.
