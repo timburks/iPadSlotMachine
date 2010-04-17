@@ -36,6 +36,8 @@ AVAudioPlayer *soundPlayer;
 {
 	DELEGATE = self;
 	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES];
+	
 	UIDevice *device = [UIDevice currentDevice];
 	if ([device respondsToSelector:@selector(userInterfaceIdiom)]) {
 		self.is_iPad = ([[UIDevice currentDevice] userInterfaceIdiom] == 1);
@@ -47,7 +49,13 @@ AVAudioPlayer *soundPlayer;
 	
 	CGRect mainBounds = [[UIScreen mainScreen] bounds];
 	self.window = [[[UIWindow alloc] initWithFrame:mainBounds] autorelease];
-	self.window.backgroundColor = [UIColor blueColor]; // confirm we've got it
+	
+	UIImageView *backgroundView = [[[UIImageView alloc] 
+									initWithImage:[UIImage imageNamed:@"MachineBackground.png"]] 
+								   autorelease];
+	backgroundView.frame = mainBounds;
+	[window addSubview:backgroundView];
+	backgroundView.contentMode = UIViewContentModeScaleAspectFill;
 	
 	self.motion = [[[Motion alloc] init] retain];
     [window addSubview:motion];
@@ -76,9 +84,11 @@ AVAudioPlayer *soundPlayer;
 											 selector:@selector(screenDidDisconnect:)
 												 name:@"UIScreenDidDisconnectNotification"
 											   object:nil];	
+	if ([UIScreen respondsToSelector:@selector(screens)]) {
 	NSArray *screens = [UIScreen screens];
-	if ([screens count] > 1) {
-		[self addExternalDisplay:[screens objectAtIndex:1]];
+		if ([screens count] > 1) {
+			[self addExternalDisplay:[screens objectAtIndex:1]];
+		}
 	}
 	
 	// play a sound on startup
