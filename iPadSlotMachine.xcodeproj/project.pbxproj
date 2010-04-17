@@ -17,6 +17,7 @@
 		225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */; };
 		225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17D71179ABF10085D2A4 /* AVFoundation.framework */; };
 		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
+		228053BD117A3CE500C66CC8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 228053BC117A3CE500C66CC8 /* Default.png */; };
 		228DE779117A391F00E77F61 /* MachineBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE775117A391F00E77F61 /* MachineBackground.png */; };
 		228DE77A117A391F00E77F61 /* Slot.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE776117A391F00E77F61 /* Slot.png */; };
 		228DE77B117A391F00E77F61 /* SlotShading.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE777117A391F00E77F61 /* SlotShading.png */; };
@@ -39,6 +40,7 @@
 		225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		225D17D71179ABF10085D2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		225D17DD1179AC030085D2A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		228053BC117A3CE500C66CC8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		228DE775117A391F00E77F61 /* MachineBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MachineBackground.png; sourceTree = "<group>"; };
 		228DE776117A391F00E77F61 /* Slot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slot.png; sourceTree = "<group>"; };
 		228DE777117A391F00E77F61 /* SlotShading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlotShading.png; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		228DE774117A390400E77F61 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				228053BC117A3CE500C66CC8 /* Default.png */,
 				228DE775117A391F00E77F61 /* MachineBackground.png */,
 				228DE776117A391F00E77F61 /* Slot.png */,
 				228DE777117A391F00E77F61 /* SlotShading.png */,
@@ -191,6 +194,7 @@
 				228DE77A117A391F00E77F61 /* Slot.png in Resources */,
 				228DE77B117A391F00E77F61 /* SlotShading.png in Resources */,
 				228DE77C117A391F00E77F61 /* StopBar.png in Resources */,
+				228053BD117A3CE500C66CC8 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
