@@ -20,6 +20,7 @@ ApplicationDelegate *DELEGATE;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 
 UIAlertView *roleChooserAlert; 
+UIAlertView *componentChooserAlert;
 AVAudioPlayer *soundPlayer;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -44,17 +45,19 @@ AVAudioPlayer *soundPlayer;
 	[self.motion becomeFirstResponder];
 	
 	// display role chooser
-	roleChooserAlert = [[[UIAlertView alloc]
-						 initWithTitle:@"iPad Slot Machine"
-						 message:@"Let's get started!"
-						 delegate:self
-						 cancelButtonTitle:@"Join Existing"
-						 otherButtonTitles:@"Create New", nil]
-						autorelease];
+	roleChooserAlert = [[UIAlertView alloc]
+						initWithTitle:@"iPad Slot Machine"
+						message:@"Let's get started!"
+						delegate:self
+						cancelButtonTitle:nil
+						otherButtonTitles:@"Create New Machine", 
+						@"Join Existing Machine", 
+						@"Test Machine Components",
+						nil];
 	[roleChooserAlert show];
 	
 	[self.window makeKeyAndVisible];
-
+	
 	// play a sound on startup
 	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StartingGate" ofType:@"wav"]];
 	NSError *error;
@@ -70,9 +73,37 @@ AVAudioPlayer *soundPlayer;
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
 {
+	NSLog(@"pressed %d", buttonIndex);
 	if (alertView == roleChooserAlert) {
-		self.applicationRole = (buttonIndex == 0) ? SlotMachineApplicationRoleSlaveSearching : SlotMachineApplicationRoleMaster;
-		[self startConnection];
+		switch (buttonIndex) {
+			case 0: 
+				self.applicationRole = SlotMachineApplicationRoleMaster;
+				[self startConnection];
+				break;
+			case 1:
+				self.applicationRole = SlotMachineApplicationRoleSlaveSearching;
+				[self startConnection];
+				break;
+			default: {
+				componentChooserAlert = [[[UIAlertView alloc]
+										  initWithTitle:@"Test Machine Components"
+										  message:@"Choose a Component"
+										  delegate:self
+										  cancelButtonTitle:@"Cancel"
+										  otherButtonTitles:@"Handle", 
+										  @"Hopper", 
+										  @"Reel", 
+										  nil]
+										 autorelease];
+				[componentChooserAlert show];				
+			}
+		}
+	} else if (alertView == componentChooserAlert) {
+		if (buttonIndex == componentChooserAlert.cancelButtonIndex) {
+			[roleChooserAlert show];
+		} else {
+			// switch to the appropriate component mode for test purposes
+		}
 	}
 }
 
@@ -114,7 +145,6 @@ AVAudioPlayer *soundPlayer;
 		// handle connections for master
 		
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
-		
 		
 	} else {
 		
