@@ -17,6 +17,10 @@
 		225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */; };
 		225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17D71179ABF10085D2A4 /* AVFoundation.framework */; };
 		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
+		228DE779117A391F00E77F61 /* MachineBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE775117A391F00E77F61 /* MachineBackground.png */; };
+		228DE77A117A391F00E77F61 /* Slot.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE776117A391F00E77F61 /* Slot.png */; };
+		228DE77B117A391F00E77F61 /* SlotShading.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE777117A391F00E77F61 /* SlotShading.png */; };
+		228DE77C117A391F00E77F61 /* StopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE778117A391F00E77F61 /* StopBar.png */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,10 @@
 		225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		225D17D71179ABF10085D2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		225D17DD1179AC030085D2A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		228DE775117A391F00E77F61 /* MachineBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MachineBackground.png; sourceTree = "<group>"; };
+		228DE776117A391F00E77F61 /* Slot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slot.png; sourceTree = "<group>"; };
+		228DE777117A391F00E77F61 /* SlotShading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlotShading.png; sourceTree = "<group>"; };
+		228DE778117A391F00E77F61 /* StopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopBar.png; sourceTree = "<group>"; };
 		22C1CC481179855B003D1424 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -88,12 +96,24 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		228DE774117A390400E77F61 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				228DE775117A391F00E77F61 /* MachineBackground.png */,
+				228DE776117A391F00E77F61 /* Slot.png */,
+				228DE777117A391F00E77F61 /* SlotShading.png */,
+				228DE778117A391F00E77F61 /* StopBar.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2235A27011797DD70099FE99 /* Source */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				228DE774117A390400E77F61 /* Graphics */,
 				225D17A91179AA130085D2A4 /* Sounds */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -167,6 +187,10 @@
 			files = (
 				225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */,
 				225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */,
+				228DE779117A391F00E77F61 /* MachineBackground.png in Resources */,
+				228DE77A117A391F00E77F61 /* Slot.png in Resources */,
+				228DE77B117A391F00E77F61 /* SlotShading.png in Resources */,
+				228DE77C117A391F00E77F61 /* StopBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
