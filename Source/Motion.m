@@ -11,33 +11,13 @@
 #define UPDATE_FREQUENCY		30						// Hz
 #define LOWPASS_FILTER_FACTOR	0.12
 #define CALIBRATION_DURATION	1.0
-#define TRIGGER_DURATION		1.5
+#define TRIGGER_DURATION		1.0
 
 @implementation Motion
 
 @synthesize delegate;
 @synthesize calibrationReadings;
 @dynamic durationTimer;
-
-// must add [motion becomeFirstResponder] *after* adding this view to view hierarchy
-// see MotionAppDelegate
-
--(BOOL) canBecomeFirstResponder {
-    return YES;
-}
-
--(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event { //__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0)
-    
-    NSLog(@"%s",_cmd);
-}
--(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {//__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0) 
-
-    NSLog(@"%s",_cmd);
-}
--(void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {//__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-    
-    NSLog(@"%s",_cmd);
-}
 
 
 - (void)startMotionDetectionWithDelegate:(id)motionDelegate {

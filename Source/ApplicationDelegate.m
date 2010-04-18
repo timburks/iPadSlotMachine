@@ -14,7 +14,6 @@ ApplicationDelegate *DELEGATE;
 
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
-@synthesize motion;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 
@@ -39,10 +38,6 @@ AVAudioPlayer *soundPlayer;
 	self.window = [[[UIWindow alloc] initWithFrame:mainBounds] autorelease];
 	self.window.backgroundColor = [UIColor blueColor]; // confirm we've got it
 	
-	self.motion = [[[Motion alloc] init] retain];
-    [window addSubview:motion];
-	[self.motion becomeFirstResponder];
-	
 	// display role chooser
 	roleChooserAlert = [[UIAlertView alloc]
 						initWithTitle:@"iPad Slot Machine"
@@ -66,8 +61,9 @@ AVAudioPlayer *soundPlayer;
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 	
-	// TODO: Only if we are the handle
-	[motion startMotionDetectionWithDelegate:self];
+	// TEST CODE FOR THE HANDLE
+	HandleViewController *handle = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+	[window addSubview:handle.view];
 	
 	return YES;
 }
@@ -157,14 +153,16 @@ AVAudioPlayer *soundPlayer;
 	}
 }
 
-
 #pragma mark -
-#pragma mark MotionDelegate
+#pragma mark Handle Methods
 
-- (void)motionTriggered:(id)sender {
-	// TODO: trigger event
+- (void)handlePulled:(id)sender {
 	NSLog(@"HANDLE PULLED!");
 }
 
+
+- (void)handleButtonPressed:(id)sender {
+	NSLog(@"HANDLE BUTTON PRESSED!");
+}
 
 @end

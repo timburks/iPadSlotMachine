@@ -19,6 +19,8 @@
 		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		D57B06F9117A7FF300D041AC /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57B06F7117A7FF300D041AC /* HandleViewController.m */; };
+		D57B06FA117A7FF300D041AC /* HandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D57B06F8117A7FF300D041AC /* HandleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,9 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D57B06F6117A7FF300D041AC /* HandleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
+		D57B06F7117A7FF300D041AC /* HandleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
+		D57B06F8117A7FF300D041AC /* HandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandleViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,9 @@
 				2235A28111797E980099FE99 /* ApplicationDelegate.m */,
 				225D177F1179A8B70085D2A4 /* Motion.h */,
 				225D17801179A8B70085D2A4 /* Motion.m */,
+				D57B06F6117A7FF300D041AC /* HandleViewController.h */,
+				D57B06F7117A7FF300D041AC /* HandleViewController.m */,
+				D57B06F8117A7FF300D041AC /* HandleViewController.xib */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			files = (
 				225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */,
 				225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */,
+				D57B06FA117A7FF300D041AC /* HandleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +189,7 @@
 				2235A27711797E5D0099FE99 /* main.m in Sources */,
 				2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */,
 				225D17811179A8B70085D2A4 /* Motion.m in Sources */,
+				D57B06F9117A7FF300D041AC /* HandleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
