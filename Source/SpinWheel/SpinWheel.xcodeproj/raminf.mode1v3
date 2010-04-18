@@ -333,7 +333,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>FFF8FA51117AAE1300B0FCD1</string>
+										<string>FFF8FA76117ABD5900B0FCD1</string>
 										<key>history</key>
 										<array>
 											<string>FF7720FC1179A82600EB8810</string>
@@ -345,8 +345,8 @@
 											<string>FFF8F9BF117AA40900B0FCD1</string>
 											<string>FFF8F9C0117AA40900B0FCD1</string>
 											<string>FFF8F9C1117AA40900B0FCD1</string>
-											<string>FFF8FA08117AA77400B0FCD1</string>
-											<string>FFF8FA4A117AAD9500B0FCD1</string>
+											<string>FFF8FA5C117ABCAD00B0FCD1</string>
+											<string>FFF8FA5D117ABCAD00B0FCD1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -404,9 +404,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>FFF8F9C5117AA40900B0FCD1</string>
+				<string>FFF8FA5F117ABCAD00B0FCD1</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>FFF8F9C6117AA40900B0FCD1</string>
+				<string>FFF8FA60117ABCAD00B0FCD1</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -544,12 +544,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>FFF8F9D2117AA43A00B0FCD1</string>
-		<string>FFF8F9D0117AA40900B0FCD1</string>
+		<string>FFF8FA75117ABD4200B0FCD1</string>
+		<string>FFF8FA71117ABD0F00B0FCD1</string>
+		<string>FFF8FA6A117ABCAD00B0FCD1</string>
 		<string>FF7720AF1179904100EB8810</string>
+		<string>/Users/raminf/Work/Projects/SlotMachine/iPadSlotMachine/Source/SpinWheel/SpinWheel.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/raminf/Work/Projects/SlotMachine/iPadSlotMachine/Source/SpinWheel/SpinWheel.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>504 181 1148 748 0 0 1680 1028 </string>
@@ -629,7 +630,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>FF7720AF1179904100EB8810</string>
-				<string>FFF8F9C7117AA40900B0FCD1</string>
+				<string>FFF8FA61117ABCAD00B0FCD1</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -673,8 +674,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {468, 304}}</string>
-											<string>{{468, 0}, {559, 304}}</string>
+											<string>{{0, 0}, {468, 306}}</string>
+											<string>{{468, 0}, {559, 306}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -689,8 +690,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {1027, 304}}</string>
-											<string>{{0, 304}, {1027, 278}}</string>
+											<string>{{0, 0}, {1027, 306}}</string>
+											<string>{{0, 306}, {1027, 276}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -723,7 +724,7 @@
 										<real>329</real>
 									</array>
 									<key>Frame</key>
-									<string>{{468, 0}, {559, 304}}</string>
+									<string>{{468, 0}, {559, 306}}</string>
 									<key>RubberWindowFrame</key>
 									<string>653 149 1027 623 0 0 1680 1028 </string>
 								</dict>
@@ -751,13 +752,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>FFF8F9C8117AA40900B0FCD1</string>
+				<string>FFF8FA62117ABCAD00B0FCD1</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>FFF8F9C9117AA40900B0FCD1</string>
-				<string>FFF8F9CA117AA40900B0FCD1</string>
-				<string>FFF8F9CB117AA40900B0FCD1</string>
-				<string>FFF8F9CC117AA40900B0FCD1</string>
-				<string>FFF8F9CD117AA40900B0FCD1</string>
+				<string>FFF8FA63117ABCAD00B0FCD1</string>
+				<string>FFF8FA64117ABCAD00B0FCD1</string>
+				<string>FFF8FA65117ABCAD00B0FCD1</string>
+				<string>FFF8FA66117ABCAD00B0FCD1</string>
+				<string>FFF8FA67117ABCAD00B0FCD1</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -921,7 +922,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>FFF8F9CE117AA40900B0FCD1</string>
+				<string>FFF8FA68117ABCAD00B0FCD1</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
