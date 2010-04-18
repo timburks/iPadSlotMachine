@@ -425,7 +425,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ramin Firoozye (825XD6PLKM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Burks (53Z922U3KK)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -434,7 +434,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = SlotMachine;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7888702-C4BC-4624-891C-00EECE0C4D61";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B28A087-F9D9-4B66-929D-41EC61EC6F7A";
 			};
 			name = Debug;
 		};
@@ -443,14 +443,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ramin Firoozye (825XD6PLKM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Burks (53Z922U3KK)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = SlotMachine;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7888702-C4BC-4624-891C-00EECE0C4D61";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B28A087-F9D9-4B66-929D-41EC61EC6F7A";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

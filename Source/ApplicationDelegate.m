@@ -55,6 +55,8 @@ AVAudioPlayer *soundPlayer;
 {
 	DELEGATE = self;
 	
+	self.applicationRole = SlotMachineApplicationRoleUnknown;
+	
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
 	
 	UIDevice *device = [UIDevice currentDevice];
@@ -220,7 +222,7 @@ AVAudioPlayer *soundPlayer;
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Received request from" message:peerName delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
-	[alert show];
+	//[alert show];
 	
 	NSError *error;
 	[currentSession acceptConnectionFromPeer:peerID error:&error];
@@ -253,6 +255,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
 		if (state == GKPeerStateConnected) {
 			if ([[peerName substringToIndex:4] isEqualToString:@"iPad"]) {
+#define ASSIGN_HOPPER_FIRST
 #ifdef ASSIGN_HOPPER_FIRST
 				if (!self.slaveHopperID) {
 					self.slaveHopperID = peerID;
@@ -290,7 +293,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 			}
 		}
 		
-	} else {
+	} else if (self.applicationRole == SlotMachineApplicationRoleSlaveSearching) {
 		
 		// handle connections for slave
 		if (state == GKPeerStateAvailable) {
@@ -298,8 +301,8 @@ NSString *nameForState(GKPeerConnectionState state) {
 		}
 		
 		else if (state = GKPeerStateConnected) {
-			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
-			[self.window addSubview:self.spinWheelViewController.view];
+			//self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			//[self.window addSubview:self.spinWheelViewController.view];
 		}
 	}
 }
@@ -336,7 +339,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 						   cancelButtonTitle:@"OK" 
 						   otherButtonTitles:nil]
 						  autorelease];
-	//[alert show];
+	[alert show];
 	
 	// the following code defines the language of commands that the master and slaves use to talk to one another.
 	
@@ -346,8 +349,8 @@ NSString *nameForState(GKPeerConnectionState state) {
 	
 	if ([verb isEqualToString:@"start"]) {	
 		// slave reel starts spinning
-		[self.spinWheelViewController doSpinForever:nil];
-		//[self.spinWheelViewController doSpin:nil];
+		//[self.spinWheelViewController doSpinForever:nil];
+		[self.spinWheelViewController doSpin:nil];
 		
 		// Clear out the score counts
 		//
@@ -360,6 +363,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 	}
 	
 	else if ([verb isEqualToString:@"become"]) {
+		self.masterID = peer;
 		// slave configures itself to be of the specified type
 		NSString *kind = [parts objectAtIndex:1];
 		if ([kind isEqualToString:@"hopper"]) {
@@ -372,13 +376,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 			NSString *indexString = [parts objectAtIndex:2];			
 			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
 			self.spinWheelViewController.index = [indexString intValue];
+			self.spinWheelViewController.wheel.spinDelegate = self;
 			[self.window addSubview:spinWheelViewController.view];
 		}
 	}
 	
 	else if ([verb isEqualToString:@"pulled"]) {
 		// the handle sends this to the master to start the reels, we use the master controller to do that.
-		[self.masterViewController start:self];
+		//if (numberOfReelsCurrentlySpinning == 0) 
+			[self.masterViewController start:self];
 	} 
 	
 	else if ([verb isEqualToString:@"pressed"]) {
@@ -400,7 +406,8 @@ NSString *nameForState(GKPeerConnectionState state) {
 		if (self.numberOfReelsCurrentlySpinning == 0) {
 			// All wheels have stopped
 			//
-			int winState = [self checkforWin:self.slaveScores];
+			int winState = [self checkForWin:self.slaveScores];
+			winState = WinJackpot;
 			if (winState == WinJackpot)
 				[self sendMessage:@"payout jackpot" toPeer:self.slaveHopperID];
 			else if (winState == WinWin)

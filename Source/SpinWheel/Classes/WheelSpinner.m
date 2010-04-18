@@ -24,6 +24,8 @@
 #define MAXROTATION			4
 #define MINROTATION			2
 
+#include "ApplicationDelegate.h"
+
 @implementation WheelSpinner
 
 
@@ -32,7 +34,7 @@
 		
         // Initialization code
 		//
-		_spinDelegate = nil;
+		_spinDelegate = DELEGATE;
 		_stopSpin = NO;
 		_spinning = NO;
 		self.maxImages = IMAGESINSTRIP;
