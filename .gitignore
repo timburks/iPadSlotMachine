@@ -1,4 +1,4 @@
 .DS_Store
 build
-*.xcodeproj/*.mode1v3
-*.xcodeproj/*.pbxuser
+*.mode1v3
+*.pbxuser
