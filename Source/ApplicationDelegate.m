@@ -13,6 +13,8 @@
 
 ApplicationDelegate *DELEGATE;
 
+#define HANDLE_AS_MASTER NO
+
 // connection timeouts
 #define TIMEOUT 60
 
@@ -162,8 +164,15 @@ AVAudioPlayer *soundPlayer;
 		switch (buttonIndex) {
 			case 0: 
 				self.applicationRole = SlotMachineApplicationRoleMaster;
-				self.masterViewController = [[[MasterViewController alloc] init] autorelease];
-				[self.window addSubview:self.masterViewController.view];
+				if (HANDLE_AS_MASTER) {
+					self.handleViewController = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+					[window addSubview:handleViewController.view];
+				}
+				else {
+					self.masterViewController = [[[MasterViewController alloc] init] autorelease];
+					[self.window addSubview:self.masterViewController.view];
+				}
+
 				[self startConnection];
 				break;
 			case 1:
@@ -483,13 +492,19 @@ NSString *nameForState(GKPeerConnectionState state) {
 
 - (void)handlePulled:(id)sender {
 	NSLog(@"HANDLE PULLED!");
-	[self sendMessage:@"pulled handle" toPeer:self.masterID];
+	if (HANDLE_AS_MASTER)
+		[self sendMessageToReels:@"start"];
+	else
+		[self sendMessage:@"pulled handle" toPeer:self.masterID];
 }
 
 
 - (void)handleButtonPressed:(id)sender {
 	NSLog(@"HANDLE BUTTON PRESSED!");
-	[self sendMessage:@"pressed handle" toPeer:self.masterID];	
+	if (HANDLE_AS_MASTER)
+		[self sendMessageToReels:@"stop"];
+	else
+		[self sendMessage:@"pressed handle" toPeer:self.masterID];	
 }
 
 #pragma mark -
