@@ -9,6 +9,7 @@
 #import "Motion.h"
 #import "MasterViewController.h"
 #import "SpinWheelViewController.h"
+#import "SlotMachineHopperViewController.h"
 
 ApplicationDelegate *DELEGATE;
 
@@ -28,7 +29,7 @@ ApplicationDelegate *DELEGATE;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 @synthesize externalWindow;
-@synthesize masterViewController, spinWheelViewController;
+@synthesize masterViewController, spinWheelViewController, slotMachineHopperViewController, handleViewController;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -163,10 +164,11 @@ AVAudioPlayer *soundPlayer;
 		if (buttonIndex == componentChooserAlert.cancelButtonIndex) {
 			[roleChooserAlert show];
 		} else if (buttonIndex == 1) {
-			HandleViewController *handle = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
-			[window addSubview:handle.view];
+			self.handleViewController = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+			[window addSubview:handleViewController.view];
 		} else if (buttonIndex == 2) {
-			
+			self.slotMachineHopperViewController = [[SlotMachineHopperViewController alloc] initWithNibName:@"SlotMachineHopperViewController" bundle:nil];
+			[window addSubview:slotMachineHopperViewController.view];
 		} else if (buttonIndex == 3) {
 			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
 			[self.window addSubview:self.spinWheelViewController.view];

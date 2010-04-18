@@ -21,6 +21,15 @@
 		225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */; };
 		225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17D71179ABF10085D2A4 /* AVFoundation.framework */; };
 		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
+		2277AA8E117AD50D0039003F /* SMHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2277AA88117AD50D0039003F /* SMHView.m */; };
+		2277AA8F117AD50D0039003F /* SMHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2277AA8A117AD50D0039003F /* SMHModel.m */; };
+		2277AA90117AD50D0039003F /* SlotMachineHopperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2277AA8C117AD50D0039003F /* SlotMachineHopperViewController.m */; };
+		2277AA97117AD5390039003F /* CoinGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA92117AD5390039003F /* CoinGlow.png */; };
+		2277AA98117AD5390039003F /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA93117AD5390039003F /* coin2.png */; };
+		2277AA99117AD5390039003F /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA94117AD5390039003F /* Coin.png */; };
+		2277AA9A117AD5390039003F /* ChestTopBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA95117AD5390039003F /* ChestTopBackground.png */; };
+		2277AA9B117AD5390039003F /* ChestBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA96117AD5390039003F /* ChestBottom.png */; };
+		2277AA9D117AD5510039003F /* SlotMachineHopperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2277AA9C117AD5510039003F /* SlotMachineHopperViewController.xib */; };
 		228053BD117A3CE500C66CC8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 228053BC117A3CE500C66CC8 /* Default.png */; };
 		2287B5DB117A97A900DE7B2E /* SpinWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287B5D8117A97A900DE7B2E /* SpinWheelViewController.m */; };
 		2287B5DC117A97A900DE7B2E /* WheelSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287B5DA117A97A900DE7B2E /* WheelSpinner.m */; };
@@ -69,6 +78,18 @@
 		225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		225D17D71179ABF10085D2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		225D17DD1179AC030085D2A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2277AA88117AD50D0039003F /* SMHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMHView.m; path = SlotMachineHopper/Classes/SMHView.m; sourceTree = SOURCE_ROOT; };
+		2277AA89117AD50D0039003F /* SMHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMHView.h; path = SlotMachineHopper/Classes/SMHView.h; sourceTree = SOURCE_ROOT; };
+		2277AA8A117AD50D0039003F /* SMHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMHModel.m; path = SlotMachineHopper/Classes/SMHModel.m; sourceTree = SOURCE_ROOT; };
+		2277AA8B117AD50D0039003F /* SMHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMHModel.h; path = SlotMachineHopper/Classes/SMHModel.h; sourceTree = SOURCE_ROOT; };
+		2277AA8C117AD50D0039003F /* SlotMachineHopperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlotMachineHopperViewController.m; path = SlotMachineHopper/Classes/SlotMachineHopperViewController.m; sourceTree = SOURCE_ROOT; };
+		2277AA8D117AD50D0039003F /* SlotMachineHopperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlotMachineHopperViewController.h; path = SlotMachineHopper/Classes/SlotMachineHopperViewController.h; sourceTree = SOURCE_ROOT; };
+		2277AA92117AD5390039003F /* CoinGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoinGlow.png; path = SlotMachineHopper/CoinGlow.png; sourceTree = SOURCE_ROOT; };
+		2277AA93117AD5390039003F /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin2.png; path = SlotMachineHopper/coin2.png; sourceTree = SOURCE_ROOT; };
+		2277AA94117AD5390039003F /* Coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coin.png; path = SlotMachineHopper/Coin.png; sourceTree = SOURCE_ROOT; };
+		2277AA95117AD5390039003F /* ChestTopBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChestTopBackground.png; path = SlotMachineHopper/ChestTopBackground.png; sourceTree = SOURCE_ROOT; };
+		2277AA96117AD5390039003F /* ChestBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChestBottom.png; path = SlotMachineHopper/ChestBottom.png; sourceTree = SOURCE_ROOT; };
+		2277AA9C117AD5510039003F /* SlotMachineHopperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SlotMachineHopperViewController.xib; path = SlotMachineHopper/SlotMachineHopperViewController.xib; sourceTree = SOURCE_ROOT; };
 		228053BC117A3CE500C66CC8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2287B5D7117A97A900DE7B2E /* SpinWheelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpinWheelViewController.h; path = SpinWheel/Classes/SpinWheelViewController.h; sourceTree = "<group>"; };
 		2287B5D8117A97A900DE7B2E /* SpinWheelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpinWheelViewController.m; path = SpinWheel/Classes/SpinWheelViewController.m; sourceTree = "<group>"; };
@@ -135,6 +156,7 @@
 		2235A27011797DD70099FE99 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2277AA83117AD4E50039003F /* Hopper */,
 				2287B5D4117A971B00DE7B2E /* SpinWheel */,
 				2235A27611797E5D0099FE99 /* main.m */,
 				2235A28011797E980099FE99 /* ApplicationDelegate.h */,
@@ -165,6 +187,32 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		2277AA83117AD4E50039003F /* Hopper */ = {
+			isa = PBXGroup;
+			children = (
+				2277AA9C117AD5510039003F /* SlotMachineHopperViewController.xib */,
+				2277AA88117AD50D0039003F /* SMHView.m */,
+				2277AA89117AD50D0039003F /* SMHView.h */,
+				2277AA8A117AD50D0039003F /* SMHModel.m */,
+				2277AA8B117AD50D0039003F /* SMHModel.h */,
+				2277AA8C117AD50D0039003F /* SlotMachineHopperViewController.m */,
+				2277AA8D117AD50D0039003F /* SlotMachineHopperViewController.h */,
+			);
+			name = Hopper;
+			sourceTree = "<group>";
+		};
+		2277AA91117AD5270039003F /* Hopper */ = {
+			isa = PBXGroup;
+			children = (
+				2277AA92117AD5390039003F /* CoinGlow.png */,
+				2277AA93117AD5390039003F /* coin2.png */,
+				2277AA94117AD5390039003F /* Coin.png */,
+				2277AA95117AD5390039003F /* ChestTopBackground.png */,
+				2277AA96117AD5390039003F /* ChestBottom.png */,
+			);
+			name = Hopper;
+			sourceTree = "<group>";
+		};
 		2287B5D4117A971B00DE7B2E /* SpinWheel */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +232,7 @@
 		228DE774117A390400E77F61 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				2277AA91117AD5270039003F /* Hopper */,
 				228053BC117A3CE500C66CC8 /* Default.png */,
 				228DE775117A391F00E77F61 /* MachineBackground.png */,
 				228DE776117A391F00E77F61 /* Slot.png */,
@@ -307,6 +356,12 @@
 				D552C796117ABE5100467ECC /* jackpotwin.caf in Resources */,
 				D552C797117ABE5100467ECC /* Credits.txt in Resources */,
 				D552C798117ABE5100467ECC /* coindrop.caf in Resources */,
+				2277AA97117AD5390039003F /* CoinGlow.png in Resources */,
+				2277AA98117AD5390039003F /* coin2.png in Resources */,
+				2277AA99117AD5390039003F /* Coin.png in Resources */,
+				2277AA9A117AD5390039003F /* ChestTopBackground.png in Resources */,
+				2277AA9B117AD5390039003F /* ChestBottom.png in Resources */,
+				2277AA9D117AD5510039003F /* SlotMachineHopperViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +379,9 @@
 				2287B5DB117A97A900DE7B2E /* SpinWheelViewController.m in Sources */,
 				2287B5DC117A97A900DE7B2E /* WheelSpinner.m in Sources */,
 				D52149FF117AA41200132858 /* HandleViewController.m in Sources */,
+				2277AA8E117AD50D0039003F /* SMHView.m in Sources */,
+				2277AA8F117AD50D0039003F /* SMHModel.m in Sources */,
+				2277AA90117AD50D0039003F /* SlotMachineHopperViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
