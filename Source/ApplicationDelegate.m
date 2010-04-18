@@ -180,15 +180,14 @@ AVAudioPlayer *soundPlayer;
 }
 
 - (void) startConnection {
-	if (self.applicationRole == SlotMachineApplicationRoleMaster) {
-		self.session = [[[GKSession alloc] initWithSessionID:@"iPadSlotMachine" 
-												 displayName:[[UIDevice currentDevice] uniqueIdentifier]
-												 sessionMode:GKSessionModeServer] autorelease];
-	} else {
-		self.session = [[[GKSession alloc] initWithSessionID:@"iPadSlotMachine" 
-												 displayName:[[UIDevice currentDevice] uniqueIdentifier]
-												 sessionMode:GKSessionModeClient] autorelease];
-	}
+	id displayName = [NSString stringWithFormat:@"%@:%@",
+					  [[UIDevice currentDevice] model],
+					  [[UIDevice currentDevice] uniqueIdentifier]];
+	GKSessionMode sessionMode = (self.applicationRole == SlotMachineApplicationRoleMaster) 
+	? GKSessionModeServer : GKSessionModeClient;
+	self.session = [[[GKSession alloc] initWithSessionID:@"iPadSlotMachine" 
+											 displayName:displayName
+											 sessionMode:sessionMode] autorelease];
 	self.session.available = YES;
 	self.session.delegate = self;
 	[self.session setDataReceiveHandler:self withContext:nil];
@@ -196,10 +195,11 @@ AVAudioPlayer *soundPlayer;
 
 - (void)session:(GKSession *)currentSession didReceiveConnectionRequestFromPeer:(NSString *)peerID
 {
+	NSString *peerName = [currentSession displayNameForPeer:peerID];
 	UIAlertView *alert = [[[UIAlertView alloc]
-						   initWithTitle:@"Received request from" message:peerID delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+						   initWithTitle:@"Received request from" message:peerName delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
-	[alert show];
+	//[alert show];
 	
 	NSError *error;
 	[currentSession acceptConnectionFromPeer:peerID error:&error];
@@ -218,19 +218,40 @@ NSString *nameForState(GKPeerConnectionState state) {
 
 - (void)session:(GKSession *)currentSession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
 {
+	NSString *peerName = [currentSession displayNameForPeer:peerID];
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Peer did change state" 
-						   message:[NSString stringWithFormat:@"Peer: %@ State:%@", peerID, nameForState(state)]
+						   message:[NSString stringWithFormat:@"Peer: %@ State:%@", peerName, nameForState(state)]
 						   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
-	[alert show];
+	//[alert show];
 	
 	if (self.applicationRole == SlotMachineApplicationRoleMaster) {
 		// handle connections for master
 		
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
 		if (state == GKPeerStateConnected) {
-			[self.slaveReels addObject:peerID];
+			if ([[peerName substringToIndex:4] isEqualToString:@"iPad"]) {
+				// the first iPads to connect are reels. 
+				// when we have enough, we add a hopper.
+				if ([self.slaveReels count] < 3) {
+					[self.slaveReels addObject:peerID];
+				} else {
+					self.slaveHopperID = peerID;
+				}
+			} else { // iPhones and iPods are handles.
+				self.slaveHandleID = peerID;
+			}
+		} 
+		
+		else if (state == GKPeerStateDisconnected) {
+			if ([self.slaveHandleID isEqualToString:peerID]) {
+				self.slaveHandleID = nil;
+			} else if ([self.slaveHopperID isEqualToString:peerID]) {
+				self.slaveHopperID = nil;
+			} else if ([self.slaveReels containsObject:peerID]) {
+				[self.slaveReels removeObject:peerID];
+			}
 		}
 		
 	} else {
@@ -239,6 +260,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 		if (state == GKPeerStateAvailable) {
 			[currentSession connectToPeer:peerID withTimeout:TIMEOUT];
 		}
+		
 		else if (state = GKPeerStateConnected) {
 			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
 			[self.window addSubview:self.spinWheelViewController.view];
@@ -256,20 +278,21 @@ NSString *nameForState(GKPeerConnectionState state) {
 					 error:&error];
 }
 
-- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context {
+- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)currentSession context:(void *)context {
+	NSString *peerName = [currentSession displayNameForPeer:peer];
 	UIAlertView *alert = [[[UIAlertView alloc]
-						   initWithTitle:[NSString stringWithFormat:@"Received message from %@", peer]
+						   initWithTitle:[NSString stringWithFormat:@"Received message from %@", peerName]
 						   message:[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]
 						   delegate:nil 
 						   cancelButtonTitle:@"OK" 
 						   otherButtonTitles:nil]
 						  autorelease];
-	[alert show];
+	//[alert show];
 	
 	NSString *message = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	if ([message isEqualToString:@"start"]) {
-		//[self.spinWheelViewController doSpinForever:nil];
-		[self.spinWheelViewController doSpin:nil];
+		[self.spinWheelViewController doSpinForever:nil];
+		//[self.spinWheelViewController doSpin:nil];
 	} else if ([message isEqualToString:@"stop"]) {
 		[self.spinWheelViewController doStop:nil];
 	}
