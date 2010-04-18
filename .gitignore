@@ -1,4 +1,4 @@
 .DS_Store
 build
-iPadSlotMachine.xcodeproj/*.mode1v3
-iPadSlotMachine.xcodeproj/*.pbxuser
+*.xcodeproj/*.mode1v3
+*.xcodeproj/*.pbxuser
