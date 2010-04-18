@@ -201,7 +201,7 @@ AVAudioPlayer *soundPlayer;
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Received request from" message:peerName delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
-	//[alert show];
+	[alert show];
 	
 	NSError *error;
 	[currentSession acceptConnectionFromPeer:peerID error:&error];
@@ -234,6 +234,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
 		if (state == GKPeerStateConnected) {
 			if ([[peerName substringToIndex:4] isEqualToString:@"iPad"]) {
+#ifdef ASSIGN_HOPPER_FIRST
+				if (!self.slaveHopperID) {
+					self.slaveHopperID = peerID;
+					[self sendMessage:@"become hopper" toPeer:peerID];
+				} else {
+					[self.slaveReels addObject:peerID];
+					[self sendMessage:[NSString stringWithFormat:@"become reel %d", [self.slaveReels count]] toPeer:peerID];
+				}
+#else
 				// the first iPads to connect are reels. 
 				// when we have enough, we add a hopper.
 				if ([self.slaveReels count] < 3) {
@@ -243,6 +252,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 					self.slaveHopperID = peerID;
 					[self sendMessage:@"become hopper" toPeer:peerID];
 				}
+#endif
 			} else { // iPhones and iPods are handles.
 				self.slaveHandleID = peerID;
 				[self sendMessage:@"become handle" toPeer:peerID];
@@ -277,18 +287,21 @@ NSString *nameForState(GKPeerConnectionState state) {
 
 - (void) sendMessage:(NSString *) message toPeer:(NSString *) peerID
 {
-	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
-	NSError *error;
-	[self.session sendData:data 
-				   toPeers:[NSArray arrayWithObject:peerID]
-			  withDataMode:GKSendDataReliable 
-					 error:&error];
+	if (peerID) {
+		NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
+		NSError *error;
+		[self.session sendData:data 
+					   toPeers:[NSArray arrayWithObject:peerID]
+				  withDataMode:GKSendDataReliable 
+						 error:&error];
+	}
 }
 
 - (void) sendMessageToReels:(NSString *) message
 {
 	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
 	NSError *error;
+	NSLog(@"sending to %@", slaveReels);
 	[self.session sendData:data 
 				   toPeers:slaveReels
 			  withDataMode:GKSendDataReliable 

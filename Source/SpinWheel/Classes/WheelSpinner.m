@@ -14,7 +14,7 @@
 #define IMAGEGLOSS	@"imagegloss.png"
 #define IMAGESINSTRIP			10
 #else
-#define IMAGESTRIP	@"longstrip.png"
+#define IMAGESTRIP	@"longstripCherry.png"
 #define IMAGEGLOSS	@"SlotMachine.png"
 #define IMAGESINSTRIP			5
 #endif

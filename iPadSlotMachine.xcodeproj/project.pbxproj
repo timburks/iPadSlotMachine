@@ -22,6 +22,7 @@
 		224F4DB7117B79E80073D5A4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 224F4DB6117B79E80073D5A4 /* Icon.png */; };
 		224F4DE0117B80470073D5A4 /* Jackpot.png in Resources */ = {isa = PBXBuildFile; fileRef = 224F4DDF117B80470073D5A4 /* Jackpot.png */; };
 		224F4DE2117B80500073D5A4 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 224F4DE1117B80500073D5A4 /* YouWin.png */; };
+		224F4E15117B88C70073D5A4 /* longstripCherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 224F4E14117B88C70073D5A4 /* longstripCherry.png */; };
 		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
 		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
 		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
@@ -85,6 +86,7 @@
 		224F4DB6117B79E80073D5A4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		224F4DDF117B80470073D5A4 /* Jackpot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jackpot.png; sourceTree = "<group>"; };
 		224F4DE1117B80500073D5A4 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
+		224F4E14117B88C70073D5A4 /* longstripCherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = longstripCherry.png; sourceTree = "<group>"; };
 		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
 		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		228DE774117A390400E77F61 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				224F4E14117B88C70073D5A4 /* longstripCherry.png */,
 				224F4DE1117B80500073D5A4 /* YouWin.png */,
 				224F4DDF117B80470073D5A4 /* Jackpot.png */,
 				224F4DB6117B79E80073D5A4 /* Icon.png */,
@@ -390,6 +393,7 @@
 				224F4DB7117B79E80073D5A4 /* Icon.png in Resources */,
 				224F4DE0117B80470073D5A4 /* Jackpot.png in Resources */,
 				224F4DE2117B80500073D5A4 /* YouWin.png in Resources */,
+				224F4E15117B88C70073D5A4 /* longstripCherry.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
