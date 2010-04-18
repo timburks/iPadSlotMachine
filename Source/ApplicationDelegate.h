@@ -21,6 +21,7 @@ typedef enum  {
 
 @class Motion;
 @class MasterViewController;
+@class SpinWheelViewController;
 
 @interface ApplicationDelegate : NSObject <GKSessionDelegate, MotionDelegate> {
 	UIWindow *window;
@@ -41,6 +42,7 @@ typedef enum  {
 	
 	// view controllers
 	MasterViewController *masterViewController;
+	SpinWheelViewController *spinWheelViewController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -58,8 +60,9 @@ typedef enum  {
 @property (nonatomic, retain) UIWindow *externalWindow;
 
 @property (nonatomic, retain) MasterViewController *masterViewController;
+@property (nonatomic, retain) SpinWheelViewController *spinWheelViewController;
 
-- (void) sendMessageToReels;
+- (void) sendMessageToReels:(NSString *) message;
 
 @end
 

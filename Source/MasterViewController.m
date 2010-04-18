@@ -32,7 +32,7 @@
 	[startButton setImage:[UIImage imageNamed:@"StopButtonActive.png"] forState:UIControlStateHighlighted];
 	[startButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
 	[startButton addTarget:self action:@selector(stop:) forControlEvents:UIControlEventTouchUpInside];
-	[DELEGATE sendMessageToReels];
+	[DELEGATE sendMessageToReels:@"start"];
 }
 
 - (void) stop:(id) sender {
@@ -40,7 +40,7 @@
 	[startButton setImage:[UIImage imageNamed:@"StartButtonActive.png"] forState:UIControlStateHighlighted];
 	[startButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
 	[startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
-	[DELEGATE sendMessageToReels];
+	[DELEGATE sendMessageToReels:@"stop"];
 }
 
 

@@ -8,6 +8,7 @@
 #import "ApplicationDelegate.h"
 #import "Motion.h"
 #import "MasterViewController.h"
+#import "SpinWheelViewController.h"
 
 ApplicationDelegate *DELEGATE;
 
@@ -28,7 +29,7 @@ ApplicationDelegate *DELEGATE;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 @synthesize externalWindow;
-@synthesize masterViewController;
+@synthesize masterViewController, spinWheelViewController;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -87,7 +88,7 @@ AVAudioPlayer *soundPlayer;
 												 name:@"UIScreenDidDisconnectNotification"
 											   object:nil];	
 	if ([UIScreen respondsToSelector:@selector(screens)]) {
-	NSArray *screens = [UIScreen screens];
+		NSArray *screens = [UIScreen screens];
 		if ([screens count] > 1) {
 			[self addExternalDisplay:[screens objectAtIndex:1]];
 		}
@@ -169,8 +170,11 @@ AVAudioPlayer *soundPlayer;
 	} else if (alertView == componentChooserAlert) {
 		if (buttonIndex == componentChooserAlert.cancelButtonIndex) {
 			[roleChooserAlert show];
+		} else if (buttonIndex == 3) {
+			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			[self.window addSubview:self.spinWheelViewController.view];
 		} else {
-			// switch to the appropriate component mode for test purposes
+			// switch to the appropriate component mode for test purposes	
 		}
 	}
 }
@@ -235,12 +239,16 @@ NSString *nameForState(GKPeerConnectionState state) {
 		if (state == GKPeerStateAvailable) {
 			[currentSession connectToPeer:peerID withTimeout:TIMEOUT];
 		}
+		else if (state = GKPeerStateConnected) {
+			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			[self.window addSubview:self.spinWheelViewController.view];
+		}
 	}
 }
 
-- (void) sendMessageToReels 
+- (void) sendMessageToReels:(NSString *) message
 {
-	NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];	
+	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
 	NSError *error;
 	[self.session sendData:data 
 				   toPeers:slaveReels
@@ -257,6 +265,14 @@ NSString *nameForState(GKPeerConnectionState state) {
 						   otherButtonTitles:nil]
 						  autorelease];
 	[alert show];
+	
+	NSString *message = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	if ([message isEqualToString:@"start"]) {
+		//[self.spinWheelViewController doSpinForever:nil];
+		[self.spinWheelViewController doSpin:nil];
+	} else if ([message isEqualToString:@"stop"]) {
+		[self.spinWheelViewController doStop:nil];
+	}
 }
 
 #pragma mark -
