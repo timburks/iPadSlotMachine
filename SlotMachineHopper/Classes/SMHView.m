@@ -81,31 +81,32 @@
 	textLayer.fontSize = 190.0;
 	textLayer.alignmentMode = kCAAlignmentCenter;
 	textLayer.string = @"";
-	textLayer.foregroundColor = [[UIColor blackColor]CGColor];
+	textLayer.foregroundColor = [[UIColor greenColor]CGColor];
 	textLayer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0]CGColor];
 	textLayer.transform = CATransform3DMakeScale(0.1, 0.1, 1.0);
 	[self.layer addSublayer:textLayer];
 }
 
 - (IBAction)action{
-	[self beginCoinDrop:jackpot];
+	[self beginCoinDrop:SlotMachineHopperWinSizeLose];
 }
 
-- (void)beginCoinDrop:(winSize)size{
+- (void)beginCoinDrop:(SlotMachineHopperWinSize) size{
 	switch (size) {
-		case lose:
+		case SlotMachineHopperWinSizeLose:
 			coinCount = 0;
+			textLayer.foregroundColor = [[UIColor yellowColor]CGColor];
 			textLayer.string = @"YOU LOSE.";
 			break;
-		case win:
+		case SlotMachineHopperWinSizeWin:
 			coinCount = 10;
 			textLayer.string = @"You Win";
 			break;
-		case bigWin:
+		case SlotMachineHopperWinSizeBigWin:
 			coinCount = 30;
 			textLayer.string = @"Big Win!";
 			break;
-		case jackpot:
+		case SlotMachineHopperWinSizeJackpot:
 			coinCount = 100;
 			textLayer.string = @"JACKPOT!!";
 			break;

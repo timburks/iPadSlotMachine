@@ -32,6 +32,7 @@
 	[startButton setImage:[UIImage imageNamed:@"StopButtonActive.png"] forState:UIControlStateHighlighted];
 	[startButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
 	[startButton addTarget:self action:@selector(stop:) forControlEvents:UIControlEventTouchUpInside];
+	DELEGATE.numberOfReelsCurrentlySpinning = [DELEGATE.slaveReels count];
 	[DELEGATE sendMessageToReels:@"start"];
 }
 

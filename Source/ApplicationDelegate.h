@@ -6,6 +6,7 @@
 //
 
 #import "HandleViewController.h"
+#import "WheelSpinner.h"
 
 typedef enum  {
 	SlotMachineApplicationRoleUnknown,
@@ -24,7 +25,7 @@ typedef enum  {
 @class SlotMachineHopperViewController;
 @class HandleViewController;
 
-@interface ApplicationDelegate : NSObject <GKSessionDelegate, HandleViewControllerDelegate> {
+@interface ApplicationDelegate : NSObject <GKSessionDelegate, HandleViewControllerDelegate, WheelSpinnerDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
@@ -45,6 +46,8 @@ typedef enum  {
 	SpinWheelViewController *spinWheelViewController;
 	SlotMachineHopperViewController *slotMachineHopperViewController;
 	HandleViewController *handleViewController;
+	
+	int numberOfReelsCurrentlySpinning;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -65,6 +68,9 @@ typedef enum  {
 @property (nonatomic, retain) SlotMachineHopperViewController *slotMachineHopperViewController;
 @property (nonatomic, retain) HandleViewController *handleViewController;
 
+@property (nonatomic, assign) int numberOfReelsCurrentlySpinning;
+
+- (void) sendMessage:(NSString *) message toPeer:(NSString *) peerID;
 - (void) sendMessageToReels:(NSString *) message;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SlotMachineHopperViewController.h"
+#import "SMHView.h"
 
 @implementation SlotMachineHopperViewController
 
@@ -16,6 +17,11 @@
 	self.view.frame = CGRectMake(0.5*(768-1024),0.5*(1024-768),1024,768);
 	self.view.transform = CGAffineTransformMakeRotation(-M_PI/2);
 }
+
+- (void) dropCoins:(SlotMachineHopperWinSize) prize {
+	[self.view beginCoinDrop:prize];
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

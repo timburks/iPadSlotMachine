@@ -9,14 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@class SlotMachineHopperViewController;
-
-typedef enum{
-	lose = 0,
-	win,
-	bigWin,
-	jackpot
-}winSize;
+#import "SlotMachineHopperViewController.h"
 
 @interface SMHView : UIView {
 	CATextLayer *textLayer;
@@ -27,7 +20,7 @@ typedef enum{
 	CALayer *backgroundLayer, *coinsLayer, *pileLayer, *frontLayer;
 }
 
-- (void)beginCoinDrop:(winSize)size;
+- (void)beginCoinDrop:(SlotMachineHopperWinSize)size;
 - (IBAction)action;
 
 @end

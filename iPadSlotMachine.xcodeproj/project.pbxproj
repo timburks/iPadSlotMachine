@@ -15,6 +15,10 @@
 		224070C7117A8EA7002A2A2D /* StartButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C3117A8EA7002A2A2D /* StartButtonActive.png */; };
 		224070C8117A8EA7002A2A2D /* StopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C4117A8EA7002A2A2D /* StopButton.png */; };
 		224070C9117A8EA7002A2A2D /* StopButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C5117A8EA7002A2A2D /* StopButtonActive.png */; };
+		2243A1D0117AE25D000CB14C /* LabelBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CC117AE25D000CB14C /* LabelBackground.png */; };
+		2243A1D1117AE25D000CB14C /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CD117AE25D000CB14C /* 3.png */; };
+		2243A1D2117AE25D000CB14C /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CE117AE25D000CB14C /* 2.png */; };
+		2243A1D3117AE25D000CB14C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CF117AE25D000CB14C /* 1.png */; };
 		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
 		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
 		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
@@ -62,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* iPadSlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPadSlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* SlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2235A27611797E5D0099FE99 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2235A28011797E980099FE99 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +75,10 @@
 		224070C3117A8EA7002A2A2D /* StartButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButtonActive.png; sourceTree = "<group>"; };
 		224070C4117A8EA7002A2A2D /* StopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButton.png; sourceTree = "<group>"; };
 		224070C5117A8EA7002A2A2D /* StopButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButtonActive.png; sourceTree = "<group>"; };
+		2243A1CC117AE25D000CB14C /* LabelBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LabelBackground.png; sourceTree = "<group>"; };
+		2243A1CD117AE25D000CB14C /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		2243A1CE117AE25D000CB14C /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		2243A1CF117AE25D000CB14C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
 		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
@@ -148,7 +156,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* iPadSlotMachine.app */,
+				1D6058910D05DD3D006BFB54 /* SlotMachine.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,6 +240,10 @@
 		228DE774117A390400E77F61 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				2243A1CC117AE25D000CB14C /* LabelBackground.png */,
+				2243A1CD117AE25D000CB14C /* 3.png */,
+				2243A1CE117AE25D000CB14C /* 2.png */,
+				2243A1CF117AE25D000CB14C /* 1.png */,
 				2277AA91117AD5270039003F /* Hopper */,
 				228053BC117A3CE500C66CC8 /* Default.png */,
 				228DE775117A391F00E77F61 /* MachineBackground.png */,
@@ -290,9 +302,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* iPadSlotMachine */ = {
+		1D6058900D05DD3D006BFB54 /* SlotMachine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iPadSlotMachine" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SlotMachine" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -302,9 +314,9 @@
 			);
 			dependencies = (
 			);
-			name = iPadSlotMachine;
-			productName = iPadSlotMachine;
-			productReference = 1D6058910D05DD3D006BFB54 /* iPadSlotMachine.app */;
+			name = SlotMachine;
+			productName = SlotMachine;
+			productReference = 1D6058910D05DD3D006BFB54 /* SlotMachine.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -319,7 +331,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* iPadSlotMachine */,
+				1D6058900D05DD3D006BFB54 /* SlotMachine */,
 			);
 		};
 /* End PBXProject section */
@@ -362,6 +374,10 @@
 				2277AA9A117AD5390039003F /* ChestTopBackground.png in Resources */,
 				2277AA9B117AD5390039003F /* ChestBottom.png in Resources */,
 				2277AA9D117AD5510039003F /* SlotMachineHopperViewController.xib in Resources */,
+				2243A1D0117AE25D000CB14C /* LabelBackground.png in Resources */,
+				2243A1D1117AE25D000CB14C /* 3.png in Resources */,
+				2243A1D2117AE25D000CB14C /* 2.png in Resources */,
+				2243A1D3117AE25D000CB14C /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +414,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = iPadSlotMachine;
+				PRODUCT_NAME = SlotMachine;
 			};
 			name = Debug;
 		};
@@ -449,7 +465,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iPadSlotMachine" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SlotMachine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

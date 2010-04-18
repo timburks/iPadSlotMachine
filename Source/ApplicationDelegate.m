@@ -17,12 +17,9 @@ ApplicationDelegate *DELEGATE;
 #define TIMEOUT 60
 
 @interface ApplicationDelegate (Internal)
-
 - (void) addExternalDisplay:(UIScreen *) newScreen;
 - (void) startConnection;
-
 @end
-
 
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
@@ -30,6 +27,7 @@ ApplicationDelegate *DELEGATE;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 @synthesize externalWindow;
 @synthesize masterViewController, spinWheelViewController, slotMachineHopperViewController, handleViewController;
+@synthesize numberOfReelsCurrentlySpinning;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -48,6 +46,7 @@ AVAudioPlayer *soundPlayer;
 		self.is_iPad = NO;
 	}
 	
+	self.numberOfReelsCurrentlySpinning = 0;
 	self.slaveReels = [NSMutableArray array];
 	
 	CGRect mainBounds = [[UIScreen mainScreen] bounds];
@@ -171,7 +170,7 @@ AVAudioPlayer *soundPlayer;
 			[window addSubview:slotMachineHopperViewController.view];
 		} else if (buttonIndex == 3) {
 			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
-			[self.window addSubview:self.spinWheelViewController.view];
+			[self.window addSubview:spinWheelViewController.view];
 		} else {
 			// switch to the appropriate component mode for test purposes	
 		}
@@ -235,13 +234,18 @@ NSString *nameForState(GKPeerConnectionState state) {
 				// when we have enough, we add a hopper.
 				if ([self.slaveReels count] < 3) {
 					[self.slaveReels addObject:peerID];
+					[self sendMessage:[NSString stringWithFormat:@"become reel %d", [self.slaveReels count]] toPeer:peerID];
 				} else {
 					self.slaveHopperID = peerID;
+					[self sendMessage:@"become hopper" toPeer:peerID];
 				}
 			} else { // iPhones and iPods are handles.
 				self.slaveHandleID = peerID;
+				[self sendMessage:@"become handle" toPeer:peerID];
 			}
 		} 
+		
+		
 		
 		else if (state == GKPeerStateDisconnected) {
 			if ([self.slaveHandleID isEqualToString:peerID]) {
@@ -267,6 +271,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 	}
 }
 
+- (void) sendMessage:(NSString *) message toPeer:(NSString *) peerID
+{
+	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
+	NSError *error;
+	[self.session sendData:data 
+				   toPeers:[NSArray arrayWithObject:peerID]
+			  withDataMode:GKSendDataReliable 
+					 error:&error];
+}
 
 - (void) sendMessageToReels:(NSString *) message
 {
@@ -289,12 +302,73 @@ NSString *nameForState(GKPeerConnectionState state) {
 						  autorelease];
 	//[alert show];
 	
+	// the following code defines the language of commands that the master and slaves use to talk to one another.
+	
 	NSString *message = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	if ([message isEqualToString:@"start"]) {
+	NSArray *parts = [message componentsSeparatedByString:@" "];
+	NSString *verb = [parts objectAtIndex:0];
+	
+	if ([verb isEqualToString:@"start"]) {	
+		// slave reel starts spinning
 		[self.spinWheelViewController doSpinForever:nil];
 		//[self.spinWheelViewController doSpin:nil];
-	} else if ([message isEqualToString:@"stop"]) {
+	} 
+	
+	else if ([verb isEqualToString:@"stop"]) {
+		// slave reel stops spinning
 		[self.spinWheelViewController doStop:nil];
+	}
+	
+	else if ([verb isEqualToString:@"become"]) {
+		// slave configures itself to be of the specified type
+		NSString *kind = [parts objectAtIndex:1];
+		if ([kind isEqualToString:@"hopper"]) {
+			self.slotMachineHopperViewController = [[SlotMachineHopperViewController alloc] initWithNibName:@"SlotMachineHopperViewController" bundle:nil];
+			[self.window addSubview:slotMachineHopperViewController.view];
+		} else if ([kind isEqualToString:@"handle"]) {
+			self.handleViewController = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+			[self.window addSubview:handleViewController.view];
+		} else if ([kind isEqualToString:@"reel"]) {
+			NSString *indexString = [parts objectAtIndex:2];			
+			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			self.spinWheelViewController.index = [indexString intValue];
+			[self.window addSubview:spinWheelViewController.view];
+		}
+	}
+	
+	else if ([verb isEqualToString:@"pulled"]) {
+		// the handle sends this to the master to start the reels, we use the master controller to do that.
+		[self.masterViewController start:self];
+	} 
+	
+	else if ([verb isEqualToString:@"pressed"]) {
+		// the handle sends this to the master when the button is pressed...
+	}
+	
+	else if ([verb isEqualToString:@"stopped"]) {
+		// a reel sends this to the master along with its index and stopping point
+		self.numberOfReelsCurrentlySpinning--;
+		if (self.numberOfReelsCurrentlySpinning == 0) {
+			// incomplete...
+			[self sendMessage:@"payout jackpot" toPeer:self.slaveHopperID];
+		}
+	}
+	
+	else if ([verb isEqualToString:@"payout"]) {
+		// the master sends this to the hopper along with the size of the payout.
+		// valid payouts are "lose" "win" "big" and "jackpot".
+		NSString *payoutSize = [parts objectAtIndex:1];
+		int prize;
+		if ([payoutSize isEqualToString:@"lose"]) {
+			prize = SlotMachineHopperWinSizeLose;
+		} else if ([payoutSize isEqualToString:@"win"]) {
+			prize = SlotMachineHopperWinSizeWin;
+		} else if ([payoutSize isEqualToString:@"big"]) {
+			prize = SlotMachineHopperWinSizeBigWin;
+		} else if ([payoutSize isEqualToString:@"jackpot"]) {
+			prize = SlotMachineHopperWinSizeJackpot;
+		}
+		[self.slotMachineHopperViewController dropCoins:prize];
 	}
 }
 
@@ -303,11 +377,22 @@ NSString *nameForState(GKPeerConnectionState state) {
 
 - (void)handlePulled:(id)sender {
 	NSLog(@"HANDLE PULLED!");
+	[self sendMessage:@"pulled handle" toPeer:self.masterID];
 }
 
 
 - (void)handleButtonPressed:(id)sender {
 	NSLog(@"HANDLE BUTTON PRESSED!");
+	[self sendMessage:@"pressed handle" toPeer:self.masterID];	
+}
+
+#pragma mark -
+#pragma mark Reel Methods
+
+- (void) SpinningEndedAt:(NSUInteger)number {
+	// tell the master
+	NSString *message = [NSString stringWithFormat:@"stopped %d %d", self.spinWheelViewController.index, number];
+	[self sendMessage:message toPeer:self.masterID];
 }
 
 @end

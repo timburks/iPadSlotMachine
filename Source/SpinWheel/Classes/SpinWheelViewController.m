@@ -10,13 +10,15 @@
 
 @implementation SpinWheelViewController
 
+UIImageView *labelImageBackground;
+UIImageView *labelImageView;
+
 - (void) loadView {
 	self.view = [[[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]] autorelease];
 	// Custom initialization
 	CGRect f = self.view.frame;
 	self.wheel = [[WheelSpinner alloc] initWithFrame:f];
 	self.view = self.wheel;
-	
 	/*
 	 * This is just so we can test the spin forever/stop functionality
 	 */
@@ -46,8 +48,21 @@
 	[self.spinButton addTarget:self action:@selector(doSpin:) forControlEvents:UIControlEventTouchDown];
 	[self.view addSubview:self.spinButton];
 	
+	labelImageBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LabelBackground.png"]];
+	labelImageBackground.frame = CGRectMake(0.5*(768-250), 1024-248+3,250,248);
+	
+	labelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1.png"]];
+	labelImageView.frame = CGRectMake(0.5*(768-92), labelImageBackground.frame.origin.y + 75, 92, 138);
+	
+	labelImageBackground.hidden = YES;
+	labelImageView.hidden = YES;
+	
+	[self.view addSubview:labelImageBackground];
+	[self.view addSubview:labelImageView];
+	
 	self.view.userInteractionEnabled = YES;
 	_count = 0;
+	_index = 0;
 	//[self.wheel setWheelTo:_count startAt:-1 animate:NO];
 }
 
@@ -149,5 +164,18 @@
 @synthesize wheel = _wheel;
 @synthesize count = _count;
 @synthesize spinButton = _spinButton;
+
+- (void) setIndex:(int) index {
+	_index = index;
+	labelImageBackground.hidden = (index > 0);
+	labelImageView.hidden = (index > 0);
+	if ((index > 0) || (index <= 3)) {
+		labelImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png"]];
+	}	
+}
+
+- (int) index {
+	return _index;
+}
 
 @end
