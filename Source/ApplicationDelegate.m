@@ -98,10 +98,6 @@ AVAudioPlayer *soundPlayer;
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 	
-	// TEST CODE FOR THE HANDLE
-	HandleViewController *handle = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
-	[window addSubview:handle.view];
-	
 	return YES;
 }
 
@@ -166,6 +162,11 @@ AVAudioPlayer *soundPlayer;
 	} else if (alertView == componentChooserAlert) {
 		if (buttonIndex == componentChooserAlert.cancelButtonIndex) {
 			[roleChooserAlert show];
+		} else if (buttonIndex == 1) {
+			HandleViewController *handle = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+			[window addSubview:handle.view];
+		} else if (buttonIndex == 2) {
+			
 		} else if (buttonIndex == 3) {
 			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
 			[self.window addSubview:self.spinWheelViewController.view];
