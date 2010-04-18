@@ -48,7 +48,7 @@
 	
 	self.view.userInteractionEnabled = YES;
 	_count = 0;
-	[self.wheel setWheelTo:_count startAt:-1 animate:NO];
+	//[self.wheel setWheelTo:_count startAt:-1 animate:NO];
 }
 
 - (id) initWithCoder:(NSCoder*) coder {
@@ -61,8 +61,7 @@
 		/*
 		 * This is just so we can test the spin forever/stop functionality
 		 */
-		/*
-		 UIButton* spinForver = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+		 UIButton* spinForever = [UIButton buttonWithType: UIButtonTypeRoundedRect];
 		 spinForever.frame = CGRectMake(200.0, 20.0, 80.0, 60.0);
 		 [spinForever setTitle:@"Spin" forState: UIControlStateNormal];	
 		 [spinForever addTarget:self action:@selector(doSpinForever:) forControlEvents:UIControlEventTouchDown];
@@ -72,8 +71,7 @@
 		 stopSpin.frame = CGRectMake(400.0, 20.0, 80.0, 60.0);
 		 [stopSpin setTitle:@"Stop" forState: UIControlStateNormal];	
 		 [stopSpin addTarget:self action:@selector(doStop:) forControlEvents:UIControlEventTouchDown];
-		 [view addSubview:stopSpin];
-		 */
+		 [self.view addSubview:stopSpin];
 		
 		// Invisible spin button
 		//
@@ -89,7 +87,7 @@
 		
 		self.view.userInteractionEnabled = YES;
 		_count = 0;
-		[self.wheel setWheelTo:_count startAt:-1 animate:NO];
+		//[self.wheel setWheelTo:_count startAt:-1 animate:NO];
     }
     return self;
 }

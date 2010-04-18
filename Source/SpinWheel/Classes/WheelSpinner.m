@@ -34,6 +34,7 @@
 		//
 		_spinDelegate = nil;
 		_stopSpin = NO;
+		_spinning = NO;
 		self.maxImages = IMAGESINSTRIP;
 		self.maxImageIndex = IMAGESINSTRIP-1;
 		//self.backgroundColor = [UIColor greenColor];
@@ -62,17 +63,25 @@
 //
 - (void) setWheelTo:(NSUInteger)position startAt:(NSInteger)startAt animate:(BOOL)animate
 {
+	_spinning = YES;
+	
+	// If we've reached the bottom of the strip, we turn off animated value changes,
+	// step the displayrect back up to the top and re-enable animations.
+	//
 	if (self.currentPosition == (self.maxImageIndex) && position == 0 && !animate) {
 		[CATransaction setDisableActions:YES];
 		self.currentDisplayRect = CGRectMake(0.0, 0.0, 1.0, VIEWPORTINCREMENT);
 		self.layer.contentsRect = self.currentDisplayRect;
 		[CATransaction setDisableActions:NO];
-	} else if (self.currentPosition == 0 && position == (self.maxImageIndex) && !animate) {
-		[CATransaction setDisableActions:YES];
-		self.currentDisplayRect = CGRectMake(0.0, 0.9, 1.0, VIEWPORTINCREMENT);
-		self.layer.contentsRect = self.currentDisplayRect;
-		[CATransaction setDisableActions:NO];
+	} else 
+		// This one's for when going backwards...
+		if (self.currentPosition == 0 && position == (self.maxImageIndex) && !animate) {
+			[CATransaction setDisableActions:YES];
+			self.currentDisplayRect = CGRectMake(0.0, 0.9, 1.0, VIEWPORTINCREMENT);
+			self.layer.contentsRect = self.currentDisplayRect;
+			[CATransaction setDisableActions:NO];
 	}
+	
 	
 	if (startAt >= 0) {
 		[CATransaction setDisableActions:YES];
@@ -97,18 +106,17 @@
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished
 {
 	NSInteger stopCount = 0;
+
+	// Let's ignore coreanimation completions for other elements in the UI.
+	//
+	if (!_spinning)
+		return;
 	
-	if ((self.spinCount == self.spinMax && finished) || _stopSpin) {
+	if (self.spinCount >= self.spinMax && finished) {
 		CALayer *layer = self.layer;
 		NSString *path = [self.spinAnimation keyPath];
 		[layer setValue:[self.spinAnimation toValue] forKeyPath:path];
 		[layer removeAnimationForKey:path];
-		
-		// If they stopped the wheel manually, let's use that number as the final counter
-		// and return it back up
-		//
-		if (_stopSpin)
-			_finalCounter = self.spinCount;
 
 		// Notify the delegate we're done and return the number we came up with (between 0 < imageCount).
 		//
@@ -118,9 +126,10 @@
 	} else {
 		// On any complete spin that's past the first one but not the last one, we do linear animation.
 		//
-		if (self.spinCount < self.spinMax-1) {
+		if (_spinMax > 0 && self.spinCount < self.spinMax-1) {
 			self.spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 			stopCount = self.maxImageIndex;
+			
 		} else {
 			// On the very last spin, we stop at the pre-determined value and do an ease-out animation.
 			//
@@ -134,7 +143,7 @@
 
 - (void) spinWheel:(NSInteger)count
 {
-	_stopSpin = NO;
+	_spinning = YES;
 	
 	if (count <= 0) {
 		self.spinMax = (int) (random() % MAXROTATION);
@@ -153,6 +162,7 @@
 - (void) stopWheel
 {
 	_stopSpin = YES;
+	self.spinCount = self.spinMax-1;
 }
 
 
