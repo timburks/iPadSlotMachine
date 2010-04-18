@@ -64,6 +64,14 @@
 	if ([DELEGATE respondsToSelector:@selector(handlePulled:)])
 		[DELEGATE handlePulled:self];
 	
+	// Play sound
+	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"pullhandle" ofType:@"wav"]];
+	NSError *error;
+	if (!soundPlayer) {
+		soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+	}
+	[soundPlayer play];
+	
 	// Animate the button for feedback
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
