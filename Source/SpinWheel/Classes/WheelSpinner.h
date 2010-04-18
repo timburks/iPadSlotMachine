@@ -26,6 +26,7 @@
 	NSUInteger			_maxImageIndex;
 	NSUInteger			_finalCounter;
 	BOOL				_stopSpin;
+	BOOL				_spinning;
 }
 
 @property (nonatomic, assign) id<NSObject, WheelSpinnerDelegate> spinDelegate;
