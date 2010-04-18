@@ -7,6 +7,7 @@
 
 #import "ApplicationDelegate.h"
 #import "Motion.h"
+#import "MasterViewController.h"
 
 ApplicationDelegate *DELEGATE;
 
@@ -27,6 +28,7 @@ ApplicationDelegate *DELEGATE;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 @synthesize externalWindow;
+@synthesize masterViewController;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -100,6 +102,7 @@ AVAudioPlayer *soundPlayer;
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 	
+	
 	return YES;
 }
 
@@ -139,6 +142,8 @@ AVAudioPlayer *soundPlayer;
 		switch (buttonIndex) {
 			case 0: 
 				self.applicationRole = SlotMachineApplicationRoleMaster;
+				self.masterViewController = [[[MasterViewController alloc] init] autorelease];
+				[self.window addSubview:self.masterViewController.view];
 				[self startConnection];
 				break;
 			case 1:
@@ -180,6 +185,7 @@ AVAudioPlayer *soundPlayer;
 	}
 	self.session.available = YES;
 	self.session.delegate = self;
+	[self.session setDataReceiveHandler:self withContext:nil];
 }
 
 - (void)session:(GKSession *)currentSession didReceiveConnectionRequestFromPeer:(NSString *)peerID
@@ -193,11 +199,22 @@ AVAudioPlayer *soundPlayer;
 	[currentSession acceptConnectionFromPeer:peerID error:&error];
 }
 
+NSString *nameForState(GKPeerConnectionState state) {
+	switch (state) {
+		case GKPeerStateAvailable:return @"available";
+		case GKPeerStateUnavailable:return @"unavailable";
+		case GKPeerStateConnected:return @"connected";
+		case GKPeerStateDisconnected:return @"disconnected";
+		case GKPeerStateConnecting:return @"connecting";
+		default:return @"huh?";
+	}
+}
+
 - (void)session:(GKSession *)currentSession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
 {
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Peer did change state" 
-						   message:[NSString stringWithFormat:@"Peer: %@ State:%d", peerID, state]
+						   message:[NSString stringWithFormat:@"Peer: %@ State:%@", peerID, nameForState(state)]
 						   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
 	[alert show];
@@ -206,6 +223,9 @@ AVAudioPlayer *soundPlayer;
 		// handle connections for master
 		
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
+		if (state == GKPeerStateConnected) {
+			[self.slaveReels addObject:peerID];
+		}
 		
 	} else {
 		
@@ -216,5 +236,25 @@ AVAudioPlayer *soundPlayer;
 	}
 }
 
+- (void) sendMessageToReels 
+{
+	NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];	
+	NSError *error;
+	[self.session sendData:data 
+				   toPeers:slaveReels
+			  withDataMode:GKSendDataReliable 
+					 error:&error];
+}
+
+- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context {
+	UIAlertView *alert = [[[UIAlertView alloc]
+						   initWithTitle:[NSString stringWithFormat:@"Received message from %@", peer]
+						   message:[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]
+						   delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil]
+						  autorelease];
+	[alert show];
+}
 
 @end

@@ -24,6 +24,7 @@
 		228DE77C117A391F00E77F61 /* StopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE778117A391F00E77F61 /* StopBar.png */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
 		22E0E3BE117A5BF700A72F62 /* Strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E0E3BD117A5BF700A72F62 /* Strip.png */; };
+		22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0E3D5117A73DB00A72F62 /* MasterViewController.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		228DE778117A391F00E77F61 /* StopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopBar.png; sourceTree = "<group>"; };
 		22C1CC481179855B003D1424 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		22E0E3BD117A5BF700A72F62 /* Strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strip.png; sourceTree = "<group>"; };
+		22E0E3D4117A73DB00A72F62 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		22E0E3D5117A73DB00A72F62 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 				2235A28111797E980099FE99 /* ApplicationDelegate.m */,
 				225D177F1179A8B70085D2A4 /* Motion.h */,
 				225D17801179A8B70085D2A4 /* Motion.m */,
+				22E0E3D4117A73DB00A72F62 /* MasterViewController.h */,
+				22E0E3D5117A73DB00A72F62 /* MasterViewController.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				2235A27711797E5D0099FE99 /* main.m in Sources */,
 				2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */,
 				225D17811179A8B70085D2A4 /* Motion.m in Sources */,
+				22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@ typedef enum  {
 } SlotMachineApplicationRoleType;
 
 @class Motion;
+@class MasterViewController;
 
 @interface ApplicationDelegate : NSObject <GKSessionDelegate> {
 	UIWindow *window;
@@ -35,6 +36,9 @@ typedef enum  {
 	
 	// external display
 	UIWindow *externalWindow;
+	
+	// view controllers
+	MasterViewController *masterViewController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -50,6 +54,8 @@ typedef enum  {
 @property (nonatomic, retain) NSMutableArray *slaveReels;
 
 @property (nonatomic, retain) UIWindow *externalWindow;
+
+@property (nonatomic, retain) MasterViewController *masterViewController;
 
 @end
 
