@@ -94,22 +94,47 @@
 	[self beginCoinDrop:SlotMachineHopperWinSizeBigWin];
 }
 
+AVAudioPlayer *soundPlayer;
+
 - (void)beginCoinDrop:(SlotMachineHopperWinSize) size{
 	switch (size) {
 		case SlotMachineHopperWinSizeLose:
 			coinCount = 0;
+			textLayer.contents = nil;
 			break;
 		case SlotMachineHopperWinSizeWin:
 			coinCount = 10;
 			textLayer.contents = (id)[[UIImage imageNamed:@"YouWin.png"]CGImage];
+		{
+			NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"coindrop" ofType:@"caf"]];
+			NSError *error;
+				soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+			[soundPlayer play];
+			AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+		}
+			
 			break;
 		case SlotMachineHopperWinSizeBigWin:
 			coinCount = 30;
 			textLayer.contents = (id)[[UIImage imageNamed:@"YouWin.png"]CGImage];
+		{
+			NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"coindrop" ofType:@"caf"]];
+			NSError *error;
+				soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+			[soundPlayer play];
+			AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+		}
 			break;
 		case SlotMachineHopperWinSizeJackpot:
 			coinCount = 200;
 			textLayer.contents = (id)[[UIImage imageNamed:@"Jackpot.png"]CGImage];
+		{
+			NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"jackpot" ofType:@"caf"]];
+			NSError *error;
+				soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+			[soundPlayer play];
+			AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+		}
 			break;
 		default:
 			//textLayer.string = @"";

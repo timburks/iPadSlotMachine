@@ -13,7 +13,7 @@
 
 ApplicationDelegate *DELEGATE;
 
-#define HANDLE_AS_MASTER NO
+#define HANDLE_AS_MASTER YES
 
 // connection timeouts
 #define TIMEOUT 60
@@ -348,7 +348,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 						   cancelButtonTitle:@"OK" 
 						   otherButtonTitles:nil]
 						  autorelease];
-	[alert show];
+	//[alert show];
 	
 	// the following code defines the language of commands that the master and slaves use to talk to one another.
 	
@@ -361,9 +361,6 @@ NSString *nameForState(GKPeerConnectionState state) {
 		//[self.spinWheelViewController doSpinForever:nil];
 		[self.spinWheelViewController doSpin:nil];
 		
-		// Clear out the score counts
-		//
-		[self.slaveScores removeAllObjects];
 	} 
 	
 	else if ([verb isEqualToString:@"stop"]) {
@@ -392,8 +389,10 @@ NSString *nameForState(GKPeerConnectionState state) {
 	
 	else if ([verb isEqualToString:@"pulled"]) {
 		// the handle sends this to the master to start the reels, we use the master controller to do that.
-		//if (numberOfReelsCurrentlySpinning == 0) 
+		if (numberOfReelsCurrentlySpinning == 0) {
+			numberOfReelsCurrentlySpinning = [slaveReels count];
 			[self.masterViewController start:self];
+		}
 	} 
 	
 	else if ([verb isEqualToString:@"pressed"]) {
@@ -412,11 +411,12 @@ NSString *nameForState(GKPeerConnectionState state) {
 		//
 		[self.slaveScores addObject:[parts objectAtIndex:2]];
 
+		NSLog(@"wheel stopped. remaining %d", self.numberOfReelsCurrentlySpinning);
 		if (self.numberOfReelsCurrentlySpinning == 0) {
 			// All wheels have stopped
 			//
 			int winState = [self checkForWin:self.slaveScores];
-			winState = WinJackpot;
+
 			if (winState == WinJackpot)
 				[self sendMessage:@"payout jackpot" toPeer:self.slaveHopperID];
 			else if (winState == WinWin)
@@ -456,17 +456,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 	// NOTE: we're hard-code assuming there are three spinners here. 
 	// We should redo this so it can recursively take any number of reels.
 	
-	for (NSString* first in scores) {
-		for (NSString *second in scores) {
-			for (NSString *third in scores) {
-				if ([first isEqualToString:second] && [second isEqualToString:third]) {
-					return 3;
-				}
-				if ([first isEqualToString:second] || [first isEqualToString:third] || [second isEqualToString:third])
-					return 2;
-			}
-		}
-	}
+	NSString* first = [scores objectAtIndex:0];
+	NSString* second = [scores objectAtIndex:1];
+	NSString* third = [scores objectAtIndex:2];
+
+	if ([first isEqualToString:second] && [second isEqualToString:third])
+		return 3;
+	if ([first isEqualToString:second] || [first isEqualToString:third] || [second isEqualToString:third])
+		return 2;
+
 	return 0;
 }
 
@@ -492,8 +490,13 @@ NSString *nameForState(GKPeerConnectionState state) {
 
 - (void)handlePulled:(id)sender {
 	NSLog(@"HANDLE PULLED!");
-	if (HANDLE_AS_MASTER)
+	if (HANDLE_AS_MASTER) {
+		numberOfReelsCurrentlySpinning = [slaveReels count];
+		// Clear out the score counts
+		//
+		[self.slaveScores removeAllObjects];		
 		[self sendMessageToReels:@"start"];
+	}
 	else
 		[self sendMessage:@"pulled handle" toPeer:self.masterID];
 }
@@ -514,6 +517,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 	// tell the master
 	NSString *message = [NSString stringWithFormat:@"stopped %d %d", self.spinWheelViewController.index, number];
 	[self sendMessage:message toPeer:self.masterID];
+	
+	{
+		NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"wheelclick" ofType:@"caf"]];
+		NSError *error;
+		soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+		[soundPlayer play];
+		AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+	}
+	
 }
 
 @end
