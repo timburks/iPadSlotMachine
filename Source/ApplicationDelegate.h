@@ -59,6 +59,9 @@ typedef enum  {
 
 @property (nonatomic, retain) MasterViewController *masterViewController;
 
+
+- (void) sendMessageToReels;
+
 @end
 
 // Global. Could be a singleton if you prefer. :)
