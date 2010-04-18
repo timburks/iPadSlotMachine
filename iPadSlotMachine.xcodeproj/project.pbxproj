@@ -11,6 +11,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2235A27711797E5D0099FE99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A27611797E5D0099FE99 /* main.m */; };
 		2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A28111797E980099FE99 /* ApplicationDelegate.m */; };
+		224070C6117A8EA7002A2A2D /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C2117A8EA7002A2A2D /* StartButton.png */; };
+		224070C7117A8EA7002A2A2D /* StartButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C3117A8EA7002A2A2D /* StartButtonActive.png */; };
+		224070C8117A8EA7002A2A2D /* StopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C4117A8EA7002A2A2D /* StopButton.png */; };
+		224070C9117A8EA7002A2A2D /* StopButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C5117A8EA7002A2A2D /* StopButtonActive.png */; };
 		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
 		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
 		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
@@ -35,6 +39,10 @@
 		2235A27611797E5D0099FE99 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2235A28011797E980099FE99 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
 		2235A28111797E980099FE99 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		224070C2117A8EA7002A2A2D /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
+		224070C3117A8EA7002A2A2D /* StartButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButtonActive.png; sourceTree = "<group>"; };
+		224070C4117A8EA7002A2A2D /* StopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButton.png; sourceTree = "<group>"; };
+		224070C5117A8EA7002A2A2D /* StopButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButtonActive.png; sourceTree = "<group>"; };
 		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
 		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
@@ -114,6 +122,10 @@
 				228DE776117A391F00E77F61 /* Slot.png */,
 				228DE777117A391F00E77F61 /* SlotShading.png */,
 				228DE778117A391F00E77F61 /* StopBar.png */,
+				224070C2117A8EA7002A2A2D /* StartButton.png */,
+				224070C3117A8EA7002A2A2D /* StartButtonActive.png */,
+				224070C4117A8EA7002A2A2D /* StopButton.png */,
+				224070C5117A8EA7002A2A2D /* StopButtonActive.png */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -204,6 +216,10 @@
 				228DE77C117A391F00E77F61 /* StopBar.png in Resources */,
 				228053BD117A3CE500C66CC8 /* Default.png in Resources */,
 				22E0E3BE117A5BF700A72F62 /* Strip.png in Resources */,
+				224070C6117A8EA7002A2A2D /* StartButton.png in Resources */,
+				224070C7117A8EA7002A2A2D /* StartButtonActive.png in Resources */,
+				224070C8117A8EA7002A2A2D /* StopButton.png in Resources */,
+				224070C9117A8EA7002A2A2D /* StopButtonActive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

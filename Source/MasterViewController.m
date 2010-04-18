@@ -9,6 +9,7 @@
 #import "ApplicationDelegate.h"
 
 @implementation MasterViewController
+@synthesize startButton;
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
@@ -16,24 +17,32 @@
 				  initWithFrame:[[UIScreen mainScreen] applicationFrame]]
 				 autorelease];
 	self.view.backgroundColor = [UIColor clearColor];
-	UIButton *startButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[startButton setTitle:@"Start" forState:UIControlStateNormal];
+	self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[startButton setImage:[UIImage imageNamed:@"StartButton.png"] forState:UIControlStateNormal];
+	[startButton setImage:[UIImage imageNamed:@"StartButtonActive.png"] forState:UIControlStateHighlighted];
 	[startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
-	startButton.frame = CGRectMake(100,300,768-200,1024-600);
+	startButton.opaque = NO;
+	startButton.backgroundColor = [UIColor clearColor];
+	startButton.frame = CGRectMake(0.5*(768-682),0.5*(1024-288),682,288);
 	[self.view addSubview:startButton];
 }
 
 - (void) start:(id) sender {
-	NSLog(@"START PRESSED");
+	[startButton setImage:[UIImage imageNamed:@"StopButton.png"] forState:UIControlStateNormal];
+	[startButton setImage:[UIImage imageNamed:@"StopButtonActive.png"] forState:UIControlStateHighlighted];
+	[startButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+	[startButton addTarget:self action:@selector(stop:) forControlEvents:UIControlEventTouchUpInside];
 	[DELEGATE sendMessageToReels];
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) stop:(id) sender {
+	[startButton setImage:[UIImage imageNamed:@"StartButton.png"] forState:UIControlStateNormal];
+	[startButton setImage:[UIImage imageNamed:@"StartButtonActive.png"] forState:UIControlStateHighlighted];
+	[startButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+	[startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
+	[DELEGATE sendMessageToReels];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.

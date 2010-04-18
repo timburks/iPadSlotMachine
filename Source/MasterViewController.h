@@ -7,7 +7,8 @@
 
 
 @interface MasterViewController : UIViewController {
-
+	UIButton *startButton;
 }
 
+@property (nonatomic, retain) UIButton *startButton;
 @end
