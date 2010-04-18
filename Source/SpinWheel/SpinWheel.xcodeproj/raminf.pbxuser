@@ -1,0 +1,277 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* SpinWheelAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {891, 660}}";
+			sepNavSelRange = "{389, 0}";
+			sepNavVisRange = "{0, 389}";
+		};
+	};
+	1D3623250D0F684500981E51 /* SpinWheelAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {891, 660}}";
+			sepNavSelRange = "{46, 0}";
+			sepNavVisRange = "{0, 581}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* SpinWheel */ = {
+		activeExec = 0;
+		executables = (
+			FF7720A21179903300EB8810 /* SpinWheel */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* SpinWheelViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {891, 660}}";
+			sepNavSelRange = "{50, 0}";
+			sepNavVisRange = "{0, 522}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* SpinWheelViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {978, 1365}}";
+			sepNavSelRange = "{2188, 0}";
+			sepNavVisRange = "{455, 859}";
+			sepNavWindowFrame = "{{15, 4}, {1118, 930}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = FF7720A21179903300EB8810 /* SpinWheel */;
+		activeSDKPreference = iphoneos3.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* SpinWheel */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* SpinWheel */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = FF7720B21179904200EB8810 /* Code sense */;
+		executables = (
+			FF7720A21179903300EB8810 /* SpinWheel */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					701,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					661,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 293207098;
+			PBXWorkspaceStateSaveDate = 293207098;
+		};
+		perUserProjectItems = {
+			FF7720FC1179A82600EB8810 /* PlistBookmark */ = FF7720FC1179A82600EB8810 /* PlistBookmark */;
+			FFBFEC0F117A3EB700830152 /* PBXBookmark */ = FFBFEC0F117A3EB700830152 /* PBXBookmark */;
+			FFBFEC6E117A582600830152 /* PBXBookmark */ = FFBFEC6E117A582600830152 /* PBXBookmark */;
+			FFBFEC6F117A582600830152 /* PBXBookmark */ = FFBFEC6F117A582600830152 /* PBXBookmark */;
+			FFBFEC89117A5C0900830152 /* PBXBookmark */ = FFBFEC89117A5C0900830152 /* PBXBookmark */;
+			FFBFEDD9117A883100830152 /* PBXTextBookmark */ = FFBFEDD9117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDA117A883100830152 /* PBXTextBookmark */ = FFBFEDDA117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDB117A883100830152 /* PBXTextBookmark */ = FFBFEDDB117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDC117A883100830152 /* PBXTextBookmark */ = FFBFEDDC117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDD117A883100830152 /* PBXTextBookmark */ = FFBFEDDD117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDE117A883100830152 /* PBXTextBookmark */ = FFBFEDDE117A883100830152 /* PBXTextBookmark */;
+			FFBFEDDF117A883100830152 /* PBXTextBookmark */ = FFBFEDDF117A883100830152 /* PBXTextBookmark */;
+		};
+		sourceControlManager = FF7720B11179904200EB8810 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	FF7720A21179903300EB8810 /* SpinWheel */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SpinWheel;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	FF7720B11179904200EB8810 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	FF7720B21179904200EB8810 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	FF7720B71179914500EB8810 /* WheelSpinner.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {891, 660}}";
+			sepNavSelRange = "{39, 0}";
+			sepNavVisRange = "{0, 1505}";
+			sepNavWindowFrame = "{{562, 94}, {1118, 930}}";
+		};
+	};
+	FF7720B81179914500EB8810 /* WheelSpinner.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {952, 2236}}";
+			sepNavSelRange = "{3304, 0}";
+			sepNavVisRange = "{3002, 754}";
+			sepNavWindowFrame = "{{562, 98}, {1118, 930}}";
+		};
+	};
+	FF7720FC1179A82600EB8810 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* SpinWheel-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/raminf/Work/Projects/SlotMachine/SpinWheel/SpinWheel-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	FFBFEC0F117A3EB700830152 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = FFBFEB49117A300300830152 /* imagegloss.png */;
+	};
+	FFBFEC6E117A582600830152 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = FF7721081179A82E00EB8810 /* imagestrip.png */;
+	};
+	FFBFEC6F117A582600830152 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = FFBFEC61117A572500830152 /* SlotMachine.png */;
+	};
+	FFBFEC89117A5C0900830152 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = FFBFEC62117A572500830152 /* Strip.png */;
+	};
+	FFBFEDD9117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* SpinWheelViewController.m */;
+		name = "SpinWheelViewController.m: 74";
+		rLen = 0;
+		rLoc = 2070;
+		rType = 0;
+		vrLen = 966;
+		vrLoc = 2056;
+	};
+	FFBFEDDA117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FF7720B81179914500EB8810 /* WheelSpinner.m */;
+		name = "WheelSpinner.m: 4";
+		rLen = 0;
+		rLoc = 40;
+		rType = 0;
+		vrLen = 1345;
+		vrLoc = 0;
+	};
+	FFBFEDDB117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FF7720B71179914500EB8810 /* WheelSpinner.h */;
+		name = "WheelSpinner.h: 5";
+		rLen = 0;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 1505;
+		vrLoc = 0;
+	};
+	FFBFEDDC117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* SpinWheelViewController.h */;
+		name = "SpinWheelViewController.h: 5";
+		rLen = 0;
+		rLoc = 50;
+		rType = 0;
+		vrLen = 522;
+		vrLoc = 0;
+	};
+	FFBFEDDD117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SpinWheelAppDelegate.m */;
+		name = "SpinWheelAppDelegate.m: 4";
+		rLen = 0;
+		rLoc = 46;
+		rType = 0;
+		vrLen = 581;
+		vrLoc = 0;
+	};
+	FFBFEDDE117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SpinWheelAppDelegate.h */;
+		name = "SpinWheelAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 481;
+		vrLoc = 0;
+	};
+	FFBFEDDF117A883100830152 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SpinWheelAppDelegate.h */;
+		name = "SpinWheelAppDelegate.h: 20";
+		rLen = 0;
+		rLoc = 389;
+		rType = 0;
+		vrLen = 389;
+		vrLoc = 0;
+	};
+}
