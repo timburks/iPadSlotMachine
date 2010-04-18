@@ -43,6 +43,12 @@
 		D5214A2C117AA5BC00132858 /* Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2B117AA5BC00132858 /* Handle.png */; };
 		D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2D117AA5C600132858 /* HandleBackground.png */; };
 		D5214A30117AA5D000132858 /* HandleBase.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2F117AA5D000132858 /* HandleBase.png */; };
+		D552C793117ABE5100467ECC /* wheelding.caf in Resources */ = {isa = PBXBuildFile; fileRef = D552C78D117ABE5100467ECC /* wheelding.caf */; };
+		D552C794117ABE5100467ECC /* wheelclick.caf in Resources */ = {isa = PBXBuildFile; fileRef = D552C78E117ABE5100467ECC /* wheelclick.caf */; };
+		D552C795117ABE5100467ECC /* pullhandle.wav in Resources */ = {isa = PBXBuildFile; fileRef = D552C78F117ABE5100467ECC /* pullhandle.wav */; };
+		D552C796117ABE5100467ECC /* jackpotwin.caf in Resources */ = {isa = PBXBuildFile; fileRef = D552C790117ABE5100467ECC /* jackpotwin.caf */; };
+		D552C797117ABE5100467ECC /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = D552C791117ABE5100467ECC /* Credits.txt */; };
+		D552C798117ABE5100467ECC /* coindrop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D552C792117ABE5100467ECC /* coindrop.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +97,12 @@
 		D5214A2B117AA5BC00132858 /* Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Handle.png; sourceTree = "<group>"; };
 		D5214A2D117AA5C600132858 /* HandleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBackground.png; sourceTree = "<group>"; };
 		D5214A2F117AA5D000132858 /* HandleBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBase.png; sourceTree = "<group>"; };
+		D552C78D117ABE5100467ECC /* wheelding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wheelding.caf; sourceTree = "<group>"; };
+		D552C78E117ABE5100467ECC /* wheelclick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wheelclick.caf; sourceTree = "<group>"; };
+		D552C78F117ABE5100467ECC /* pullhandle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pullhandle.wav; sourceTree = "<group>"; };
+		D552C790117ABE5100467ECC /* jackpotwin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jackpotwin.caf; sourceTree = "<group>"; };
+		D552C791117ABE5100467ECC /* Credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
+		D552C792117ABE5100467ECC /* coindrop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coindrop.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +153,12 @@
 		225D17A91179AA130085D2A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D552C78D117ABE5100467ECC /* wheelding.caf */,
+				D552C78E117ABE5100467ECC /* wheelclick.caf */,
+				D552C78F117ABE5100467ECC /* pullhandle.wav */,
+				D552C790117ABE5100467ECC /* jackpotwin.caf */,
+				D552C791117ABE5100467ECC /* Credits.txt */,
+				D552C792117ABE5100467ECC /* coindrop.caf */,
 				225D17AC1179AA530085D2A4 /* LittleFlips6.wav */,
 				225D17AE1179AA5A0085D2A4 /* StartingGate.wav */,
 			);
@@ -283,6 +301,12 @@
 				D5214A2C117AA5BC00132858 /* Handle.png in Resources */,
 				D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */,
 				D5214A30117AA5D000132858 /* HandleBase.png in Resources */,
+				D552C793117ABE5100467ECC /* wheelding.caf in Resources */,
+				D552C794117ABE5100467ECC /* wheelclick.caf in Resources */,
+				D552C795117ABE5100467ECC /* pullhandle.wav in Resources */,
+				D552C796117ABE5100467ECC /* jackpotwin.caf in Resources */,
+				D552C797117ABE5100467ECC /* Credits.txt in Resources */,
+				D552C798117ABE5100467ECC /* coindrop.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

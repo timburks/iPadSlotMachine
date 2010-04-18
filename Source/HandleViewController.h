@@ -15,6 +15,7 @@
 
 @interface HandleViewController : UIViewController <MotionDelegate> {
 	Motion *motionDetector;
+	AVAudioPlayer *soundPlayer;
 	IBOutlet UIButton *handleButton;
 }
 
