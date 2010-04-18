@@ -74,44 +74,46 @@
 	}
 	
 #pragma mark textLayer
-	textLayer = [CATextLayer layer];
+	//textLayer = [CATextLayer layer];
+	textLayer = [CALayer layer];
 	textLayer.bounds = CGRectMake(0.0, 0.0, 1024.0, 190.0);
 	textLayer.position = CGPointMake(512.0, 384.0);
 	//textLayer.font = @"Chalkboard";
-	textLayer.fontSize = 190.0;
+	/*textLayer.fontSize = 190.0;
 	textLayer.alignmentMode = kCAAlignmentCenter;
 	textLayer.string = @"";
-	textLayer.foregroundColor = [[UIColor greenColor]CGColor];
-	textLayer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0]CGColor];
+	textLayer.foregroundColor = [[UIColor blackColor]CGColor];
+	textLayer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0]CGColor];*/
 	textLayer.transform = CATransform3DMakeScale(0.1, 0.1, 1.0);
 	[self.layer addSublayer:textLayer];
+	
+	coinAmount = 0;
 }
 
 - (IBAction)action{
-	[self beginCoinDrop:SlotMachineHopperWinSizeLose];
+	[self beginCoinDrop:SlotMachineHopperWinSizeBigWin];
 }
 
 - (void)beginCoinDrop:(SlotMachineHopperWinSize) size{
 	switch (size) {
 		case SlotMachineHopperWinSizeLose:
 			coinCount = 0;
-			textLayer.foregroundColor = [[UIColor yellowColor]CGColor];
-			textLayer.string = @"YOU LOSE.";
 			break;
 		case SlotMachineHopperWinSizeWin:
 			coinCount = 10;
-			textLayer.string = @"You Win";
+			textLayer.contents = (id)[[UIImage imageNamed:@"YouWin.png"]CGImage];
 			break;
 		case SlotMachineHopperWinSizeBigWin:
 			coinCount = 30;
-			textLayer.string = @"Big Win!";
+			textLayer.contents = (id)[[UIImage imageNamed:@"YouWin.png"]CGImage];
 			break;
 		case SlotMachineHopperWinSizeJackpot:
-			coinCount = 100;
-			textLayer.string = @"JACKPOT!!";
+			coinCount = 200;
+			textLayer.contents = (id)[[UIImage imageNamed:@"Jackpot.png"]CGImage];
 			break;
 		default:
-			textLayer.string = @"";
+			//textLayer.string = @"";
+			textLayer.contents = nil;
 			break;
 	}
 		
@@ -143,36 +145,39 @@
 	textLayer.actions = [NSDictionary dictionaryWithObject:animation forKey:@"transform"];
 	textLayer.transform = scale6;
 	
-	//for(Byte x = 0; x < coinCount/10; x++){
-		for(CALayer *coinLayer in coins) {
-			NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:((float)(rand()%20)/10.0) target:self selector:@selector(moveLayer:) userInfo:[NSDictionary dictionaryWithObject:coinLayer forKey:@"layer"] repeats:YES];
-			//coinLayer.position = CGPointMake(coinLayer.position.x, 768.0);
+	coinAmount = 0;
+	for(CALayer *coinLayer in coins) {
+		if(coinCount != 0){
+			if(coinAmount < (coinCount)){
+				coinAmount++;
+				NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:((float)(rand()%20)/10.0) target:self selector:@selector(moveLayer:) userInfo:[NSDictionary dictionaryWithObject:coinLayer forKey:@"layer"] repeats:YES];
+			}
 		}
-	//}
+	}
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-	//static int thing;
 	CALayer *coinLayer = [anim valueForKey:@"myLayer"];
 	[CATransaction begin];
 	[CATransaction setDisableActions:YES];
 	srand(rand());
 	coinLayer.position = CGPointMake((rand()%824)+100.0, -50.0);
 	[CATransaction commit];
-	pileLayer.position = CGPointMake(pileLayer.position.x, pileLayer.position.y-0.5);
-	/*if(thing < coinCount){
-		thing++;
-		coinLayer.position = CGPointMake(coinLayer.position.x, 768.0);
-	}*/
+	if (pileLayer.position.y > 180.0) {
+		pileLayer.position = CGPointMake(pileLayer.position.x, pileLayer.position.y-0.5);
+	}
+	if(coinAmount > (coinCount * 100.0) + 99){
+		coinAmount = 0;
+	}
 }
 
 - (void)moveLayer:(NSTimer *)time{
-	static int amount;
 	CALayer *layer = [[time userInfo] objectForKey:@"layer"];
 	layer.position = CGPointMake(layer.position.x, 768.0);
-	amount++;
-	if(amount > coinCount*1000){
+	coinAmount++;
+	if(coinAmount > (coinCount * 100.0)){
 		[time invalidate];
+		//coinAmount = coinCount*1000;
 	}
 }
 
