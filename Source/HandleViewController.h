@@ -17,10 +17,13 @@
 	Motion *motionDetector;
 	AVAudioPlayer *soundPlayer;
 	IBOutlet UIButton *handleButton;
+	IBOutlet UIView *handleBar;
+	CGRect handleRect;
 }
 
 @property (nonatomic, retain) Motion *motionDetector;
 @property (nonatomic, retain) UIButton *handleButton;
+@property (nonatomic, retain) UIView *handleBar;
 
 - (IBAction)buttonPressed:(id)sender;
 
