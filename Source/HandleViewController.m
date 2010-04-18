@@ -10,7 +10,7 @@
 
 @implementation HandleViewController
 
-@synthesize motionDetector;
+@synthesize motionDetector, handleButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -19,6 +19,11 @@
 	self.motionDetector = detector;
 	
 	[detector autorelease];
+}
+
+
+- (void)viewDidUnload {
+	self.handleButton = nil;
 }
 
 
@@ -40,7 +45,8 @@
 
 
 - (void)dealloc {
-	[self.motionDetector release];
+	[handleButton release];
+	[motionDetector release];
     [super dealloc];
 }
 
@@ -57,6 +63,24 @@
 - (void)motionTriggered:(id)sender {
 	if ([DELEGATE respondsToSelector:@selector(handlePulled:)])
 		[DELEGATE handlePulled:self];
+	
+	// Animate the button for feedback
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.35];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(didAnimateButton:finished:context:)];
+	[handleButton setTransform:CGAffineTransformMakeScale(2.0, 2.0)];
+	[UIView commitAnimations];
+}
+
+
+- (void)didAnimateButton:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.35];
+	[handleButton setTransform:CGAffineTransformIdentity];
+	[UIView commitAnimations];
 }
 
 

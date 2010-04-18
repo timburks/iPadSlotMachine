@@ -1,8 +1,8 @@
 
 iPadSlotMachine is an iPadDevCamp project.
 
-The "Slot Machine Team" consists of Tim Burks, John Ellenich, Ramin Firoozye, 
-Aleksey Novicov, and Warren Stringer.
+The "Slot Machine Team" consists of Tim Burks, Andrew Dudney, John Ellenich, 
+Ramin Firoozye, Aleksey Novicov, and Warren Stringer.
 
 This software is released under the BSD License.
 
@@ -40,6 +40,15 @@ stopped, a score or other summary result will be calculated and displayed on the
 
 Appropriate sounds would be awesome. Audio feedback through the iPad microphone would be
 nice for randomizing or otherwise driving the reels.
+
+ROLES
+
+Tim Burks - project planning and architecture, networking
+Andrew Dudney - graphics and audio, hopper implementation
+John Ellenich - art and visual design
+Ramin Firoozye - graphics, reel implementation
+Aleksey Novicov - handle implementation
+Warren Stringer - audio, motion technology
 
 =============================================================================================
 Copyright 2010, Slot Machine Team. All rights reserved.

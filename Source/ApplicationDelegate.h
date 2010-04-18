@@ -19,7 +19,10 @@ typedef enum  {
 	SlotMachineApplicationRoleMax
 } SlotMachineApplicationRoleType;
 
-@interface ApplicationDelegate : NSObject <HandleViewControllerDelegate> {
+@class MasterViewController;
+@class SpinWheelViewController;
+
+@interface ApplicationDelegate : NSObject <GKSessionDelegate, HandleViewControllerDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
@@ -31,6 +34,13 @@ typedef enum  {
 	NSString *slaveHandleID;
 	NSString *slaveHopperID;
 	NSMutableArray *slaveReels;
+	
+	// external display
+	UIWindow *externalWindow;
+	
+	// view controllers
+	MasterViewController *masterViewController;
+	SpinWheelViewController *spinWheelViewController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -43,6 +53,13 @@ typedef enum  {
 @property (nonatomic, retain) NSString *slaveHandleID;
 @property (nonatomic, retain) NSString *slaveHopperID;
 @property (nonatomic, retain) NSMutableArray *slaveReels;
+
+@property (nonatomic, retain) UIWindow *externalWindow;
+
+@property (nonatomic, retain) MasterViewController *masterViewController;
+@property (nonatomic, retain) SpinWheelViewController *spinWheelViewController;
+
+- (void) sendMessageToReels:(NSString *) message;
 
 @end
 

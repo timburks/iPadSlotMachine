@@ -15,9 +15,11 @@
 
 @interface HandleViewController : UIViewController <MotionDelegate> {
 	Motion *motionDetector;
+	IBOutlet UIButton *handleButton;
 }
 
 @property (nonatomic, retain) Motion *motionDetector;
+@property (nonatomic, retain) UIButton *handleButton;
 
 - (IBAction)buttonPressed:(id)sender;
 

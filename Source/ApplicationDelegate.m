@@ -6,16 +6,29 @@
 //
 
 #import "ApplicationDelegate.h"
+#import "Motion.h"
+#import "MasterViewController.h"
+#import "SpinWheelViewController.h"
 
 ApplicationDelegate *DELEGATE;
 
 // connection timeouts
 #define TIMEOUT 60
 
+@interface ApplicationDelegate (Internal)
+
+- (void) addExternalDisplay:(UIScreen *) newScreen;
+- (void) startConnection;
+
+@end
+
+
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
+@synthesize externalWindow;
+@synthesize masterViewController, spinWheelViewController;
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -24,6 +37,8 @@ AVAudioPlayer *soundPlayer;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	DELEGATE = self;
+	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES];
 	
 	UIDevice *device = [UIDevice currentDevice];
 	if ([device respondsToSelector:@selector(userInterfaceIdiom)]) {
@@ -36,7 +51,13 @@ AVAudioPlayer *soundPlayer;
 	
 	CGRect mainBounds = [[UIScreen mainScreen] bounds];
 	self.window = [[[UIWindow alloc] initWithFrame:mainBounds] autorelease];
-	self.window.backgroundColor = [UIColor blueColor]; // confirm we've got it
+	
+	UIImageView *backgroundView = [[[UIImageView alloc] 
+									initWithImage:[UIImage imageNamed:@"MachineBackground.png"]] 
+								   autorelease];
+	backgroundView.frame = mainBounds;
+	[window addSubview:backgroundView];
+	backgroundView.contentMode = UIViewContentModeScaleAspectFill;
 	
 	// display role chooser
 	roleChooserAlert = [[UIAlertView alloc]
@@ -51,6 +72,22 @@ AVAudioPlayer *soundPlayer;
 	[roleChooserAlert show];
 	
 	[self.window makeKeyAndVisible];
+	
+	// watch for external screens
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(screenDidConnect:)
+												 name:@"UIScreenDidConnectNotification"
+											   object:nil];	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(screenDidDisconnect:)
+												 name:@"UIScreenDidDisconnectNotification"
+											   object:nil];	
+	if ([UIScreen respondsToSelector:@selector(screens)]) {
+		NSArray *screens = [UIScreen screens];
+		if ([screens count] > 1) {
+			[self addExternalDisplay:[screens objectAtIndex:1]];
+		}
+	}
 	
 	// play a sound on startup
 	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StartingGate" ofType:@"wav"]];
@@ -68,6 +105,34 @@ AVAudioPlayer *soundPlayer;
 	return YES;
 }
 
+- (void) screenDidConnect:(NSNotification *) notification {
+	NSLog(@"notification: %@", notification);
+	UIScreen *newScreen = (UIScreen *) notification.object;
+	[self addExternalDisplay:newScreen];
+}
+
+- (void) screenDidDisconnect:(NSNotification *) notification {
+	NSLog(@"notification: %@", notification);
+	UIScreen *oldScreen = (UIScreen *) notification.object;
+	if (externalWindow && (externalWindow.screen == oldScreen)) {
+		self.externalWindow = nil;
+	}
+}
+
+- (void) addExternalDisplay:(UIScreen *) newScreen 
+{
+	NSArray *modes = newScreen.availableModes;
+	NSLog(@"screen modes: %@", modes);
+	newScreen.currentMode = [modes objectAtIndex:0];
+	NSLog(@"selecting mode %@", newScreen.currentMode);
+	
+	self.externalWindow = [[[UIWindow alloc] 
+							initWithFrame:[newScreen applicationFrame]]
+						   autorelease];
+	externalWindow.backgroundColor = [UIColor blueColor];
+	externalWindow.screen = newScreen;
+	[externalWindow makeKeyAndVisible];
+}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
 {
@@ -76,6 +141,8 @@ AVAudioPlayer *soundPlayer;
 		switch (buttonIndex) {
 			case 0: 
 				self.applicationRole = SlotMachineApplicationRoleMaster;
+				self.masterViewController = [[[MasterViewController alloc] init] autorelease];
+				[self.window addSubview:self.masterViewController.view];
 				[self startConnection];
 				break;
 			case 1:
@@ -99,8 +166,11 @@ AVAudioPlayer *soundPlayer;
 	} else if (alertView == componentChooserAlert) {
 		if (buttonIndex == componentChooserAlert.cancelButtonIndex) {
 			[roleChooserAlert show];
+		} else if (buttonIndex == 3) {
+			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			[self.window addSubview:self.spinWheelViewController.view];
 		} else {
-			// switch to the appropriate component mode for test purposes
+			// switch to the appropriate component mode for test purposes	
 		}
 	}
 }
@@ -117,9 +187,10 @@ AVAudioPlayer *soundPlayer;
 	}
 	self.session.available = YES;
 	self.session.delegate = self;
+	[self.session setDataReceiveHandler:self withContext:nil];
 }
 
-- (void)session:(GKSession *)session didReceiveConnectionRequestFromPeer:(NSString *)peerID
+- (void)session:(GKSession *)currentSession didReceiveConnectionRequestFromPeer:(NSString *)peerID
 {
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Received request from" message:peerID delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
@@ -127,14 +198,25 @@ AVAudioPlayer *soundPlayer;
 	[alert show];
 	
 	NSError *error;
-	[session acceptConnectionFromPeer:peerID error:&error];
+	[currentSession acceptConnectionFromPeer:peerID error:&error];
 }
 
-- (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
+NSString *nameForState(GKPeerConnectionState state) {
+	switch (state) {
+		case GKPeerStateAvailable:return @"available";
+		case GKPeerStateUnavailable:return @"unavailable";
+		case GKPeerStateConnected:return @"connected";
+		case GKPeerStateDisconnected:return @"disconnected";
+		case GKPeerStateConnecting:return @"connecting";
+		default:return @"huh?";
+	}
+}
+
+- (void)session:(GKSession *)currentSession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state 
 {
 	UIAlertView *alert = [[[UIAlertView alloc]
 						   initWithTitle:@"Peer did change state" 
-						   message:[NSString stringWithFormat:@"Peer: %@ State:%d", peerID, state]
+						   message:[NSString stringWithFormat:@"Peer: %@ State:%@", peerID, nameForState(state)]
 						   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
 						  autorelease];
 	[alert show];
@@ -143,13 +225,50 @@ AVAudioPlayer *soundPlayer;
 		// handle connections for master
 		
 		// when a peer has connected, we need to assign it a role and then send that role to the peer.
+		if (state == GKPeerStateConnected) {
+			[self.slaveReels addObject:peerID];
+		}
 		
 	} else {
 		
 		// handle connections for slave
 		if (state == GKPeerStateAvailable) {
-			[session connectToPeer:peerID withTimeout:TIMEOUT];
+			[currentSession connectToPeer:peerID withTimeout:TIMEOUT];
 		}
+		else if (state = GKPeerStateConnected) {
+			self.spinWheelViewController = [[[SpinWheelViewController alloc] init] autorelease];
+			[self.window addSubview:self.spinWheelViewController.view];
+		}
+	}
+}
+
+
+- (void) sendMessageToReels:(NSString *) message
+{
+	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
+	NSError *error;
+	[self.session sendData:data 
+				   toPeers:slaveReels
+			  withDataMode:GKSendDataReliable 
+					 error:&error];
+}
+
+- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context {
+	UIAlertView *alert = [[[UIAlertView alloc]
+						   initWithTitle:[NSString stringWithFormat:@"Received message from %@", peer]
+						   message:[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]
+						   delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil]
+						  autorelease];
+	[alert show];
+	
+	NSString *message = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	if ([message isEqualToString:@"start"]) {
+		//[self.spinWheelViewController doSpinForever:nil];
+		[self.spinWheelViewController doSpin:nil];
+	} else if ([message isEqualToString:@"stop"]) {
+		[self.spinWheelViewController doStop:nil];
 	}
 }
 

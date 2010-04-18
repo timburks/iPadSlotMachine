@@ -11,16 +11,38 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2235A27711797E5D0099FE99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A27611797E5D0099FE99 /* main.m */; };
 		2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2235A28111797E980099FE99 /* ApplicationDelegate.m */; };
+		224070C6117A8EA7002A2A2D /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C2117A8EA7002A2A2D /* StartButton.png */; };
+		224070C7117A8EA7002A2A2D /* StartButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C3117A8EA7002A2A2D /* StartButtonActive.png */; };
+		224070C8117A8EA7002A2A2D /* StopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C4117A8EA7002A2A2D /* StopButton.png */; };
+		224070C9117A8EA7002A2A2D /* StopButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 224070C5117A8EA7002A2A2D /* StopButtonActive.png */; };
 		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
 		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
 		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
 		225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */; };
 		225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17D71179ABF10085D2A4 /* AVFoundation.framework */; };
 		225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D17DD1179AC030085D2A4 /* AudioToolbox.framework */; };
+		228053BD117A3CE500C66CC8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 228053BC117A3CE500C66CC8 /* Default.png */; };
+		2287B5DB117A97A900DE7B2E /* SpinWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287B5D8117A97A900DE7B2E /* SpinWheelViewController.m */; };
+		2287B5DC117A97A900DE7B2E /* WheelSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2287B5DA117A97A900DE7B2E /* WheelSpinner.m */; };
+		2287B5E2117A97BA00DE7B2E /* imagegloss.png in Resources */ = {isa = PBXBuildFile; fileRef = 2287B5DD117A97BA00DE7B2E /* imagegloss.png */; };
+		2287B5E3117A97BA00DE7B2E /* imagestrip.png in Resources */ = {isa = PBXBuildFile; fileRef = 2287B5DE117A97BA00DE7B2E /* imagestrip.png */; };
+		2287B5E4117A97BA00DE7B2E /* longstrip.png in Resources */ = {isa = PBXBuildFile; fileRef = 2287B5DF117A97BA00DE7B2E /* longstrip.png */; };
+		2287B5E5117A97BA00DE7B2E /* SlotMachine.png in Resources */ = {isa = PBXBuildFile; fileRef = 2287B5E0117A97BA00DE7B2E /* SlotMachine.png */; };
+		2287B5E6117A97BA00DE7B2E /* Strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 2287B5E1117A97BA00DE7B2E /* Strip.png */; };
+		2287B5F0117A97D900DE7B2E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2287B5EF117A97D900DE7B2E /* QuartzCore.framework */; };
+		228DE779117A391F00E77F61 /* MachineBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE775117A391F00E77F61 /* MachineBackground.png */; };
+		228DE77A117A391F00E77F61 /* Slot.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE776117A391F00E77F61 /* Slot.png */; };
+		228DE77B117A391F00E77F61 /* SlotShading.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE777117A391F00E77F61 /* SlotShading.png */; };
+		228DE77C117A391F00E77F61 /* StopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 228DE778117A391F00E77F61 /* StopBar.png */; };
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
+		22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0E3D5117A73DB00A72F62 /* MasterViewController.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		D57B06F9117A7FF300D041AC /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57B06F7117A7FF300D041AC /* HandleViewController.m */; };
-		D57B06FA117A7FF300D041AC /* HandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D57B06F8117A7FF300D041AC /* HandleViewController.xib */; };
+		D52149FE117AA41200132858 /* HandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52149FB117AA41200132858 /* HandleViewController.xib */; };
+		D52149FF117AA41200132858 /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D52149FC117AA41200132858 /* HandleViewController.m */; };
+		D5214A2A117AA5B200132858 /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A29117AA5B200132858 /* Ball.png */; };
+		D5214A2C117AA5BC00132858 /* Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2B117AA5BC00132858 /* Handle.png */; };
+		D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2D117AA5C600132858 /* HandleBackground.png */; };
+		D5214A30117AA5D000132858 /* HandleBase.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2F117AA5D000132858 /* HandleBase.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +52,10 @@
 		2235A27611797E5D0099FE99 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2235A28011797E980099FE99 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
 		2235A28111797E980099FE99 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		224070C2117A8EA7002A2A2D /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
+		224070C3117A8EA7002A2A2D /* StartButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButtonActive.png; sourceTree = "<group>"; };
+		224070C4117A8EA7002A2A2D /* StopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButton.png; sourceTree = "<group>"; };
+		224070C5117A8EA7002A2A2D /* StopButtonActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopButtonActive.png; sourceTree = "<group>"; };
 		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
 		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
@@ -37,13 +63,34 @@
 		225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		225D17D71179ABF10085D2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		225D17DD1179AC030085D2A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		228053BC117A3CE500C66CC8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2287B5D7117A97A900DE7B2E /* SpinWheelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpinWheelViewController.h; path = SpinWheel/Classes/SpinWheelViewController.h; sourceTree = "<group>"; };
+		2287B5D8117A97A900DE7B2E /* SpinWheelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpinWheelViewController.m; path = SpinWheel/Classes/SpinWheelViewController.m; sourceTree = "<group>"; };
+		2287B5D9117A97A900DE7B2E /* WheelSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelSpinner.h; path = SpinWheel/Classes/WheelSpinner.h; sourceTree = "<group>"; };
+		2287B5DA117A97A900DE7B2E /* WheelSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelSpinner.m; path = SpinWheel/Classes/WheelSpinner.m; sourceTree = "<group>"; };
+		2287B5DD117A97BA00DE7B2E /* imagegloss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imagegloss.png; path = SpinWheel/img/imagegloss.png; sourceTree = "<group>"; };
+		2287B5DE117A97BA00DE7B2E /* imagestrip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imagestrip.png; path = SpinWheel/img/imagestrip.png; sourceTree = "<group>"; };
+		2287B5DF117A97BA00DE7B2E /* longstrip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = longstrip.png; path = SpinWheel/img/longstrip.png; sourceTree = "<group>"; };
+		2287B5E0117A97BA00DE7B2E /* SlotMachine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SlotMachine.png; path = SpinWheel/img/SlotMachine.png; sourceTree = "<group>"; };
+		2287B5E1117A97BA00DE7B2E /* Strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Strip.png; path = SpinWheel/img/Strip.png; sourceTree = "<group>"; };
+		2287B5EF117A97D900DE7B2E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		228DE775117A391F00E77F61 /* MachineBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MachineBackground.png; sourceTree = "<group>"; };
+		228DE776117A391F00E77F61 /* Slot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slot.png; sourceTree = "<group>"; };
+		228DE777117A391F00E77F61 /* SlotShading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlotShading.png; sourceTree = "<group>"; };
+		228DE778117A391F00E77F61 /* StopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopBar.png; sourceTree = "<group>"; };
 		22C1CC481179855B003D1424 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		22E0E3D4117A73DB00A72F62 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		22E0E3D5117A73DB00A72F62 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D57B06F6117A7FF300D041AC /* HandleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
-		D57B06F7117A7FF300D041AC /* HandleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
-		D57B06F8117A7FF300D041AC /* HandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandleViewController.xib; sourceTree = "<group>"; };
+		D52149FB117AA41200132858 /* HandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandleViewController.xib; sourceTree = "<group>"; };
+		D52149FC117AA41200132858 /* HandleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
+		D52149FD117AA41200132858 /* HandleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
+		D5214A29117AA5B200132858 /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
+		D5214A2B117AA5BC00132858 /* Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Handle.png; sourceTree = "<group>"; };
+		D5214A2D117AA5C600132858 /* HandleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBackground.png; sourceTree = "<group>"; };
+		D5214A2F117AA5D000132858 /* HandleBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBase.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +105,7 @@
 				225D17CE1179AB9A0085D2A4 /* CoreAudio.framework in Frameworks */,
 				225D17D81179ABF10085D2A4 /* AVFoundation.framework in Frameworks */,
 				225D17DE1179AC040085D2A4 /* AudioToolbox.framework in Frameworks */,
+				2287B5F0117A97D900DE7B2E /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,14 +123,17 @@
 		2235A27011797DD70099FE99 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2287B5D4117A971B00DE7B2E /* SpinWheel */,
 				2235A27611797E5D0099FE99 /* main.m */,
 				2235A28011797E980099FE99 /* ApplicationDelegate.h */,
 				2235A28111797E980099FE99 /* ApplicationDelegate.m */,
 				225D177F1179A8B70085D2A4 /* Motion.h */,
 				225D17801179A8B70085D2A4 /* Motion.m */,
-				D57B06F6117A7FF300D041AC /* HandleViewController.h */,
-				D57B06F7117A7FF300D041AC /* HandleViewController.m */,
-				D57B06F8117A7FF300D041AC /* HandleViewController.xib */,
+				22E0E3D4117A73DB00A72F62 /* MasterViewController.h */,
+				22E0E3D5117A73DB00A72F62 /* MasterViewController.m */,
+				D52149FC117AA41200132858 /* HandleViewController.m */,
+				D52149FD117AA41200132858 /* HandleViewController.h */,
+				D52149FB117AA41200132858 /* HandleViewController.xib */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -96,12 +147,49 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		2287B5D4117A971B00DE7B2E /* SpinWheel */ = {
+			isa = PBXGroup;
+			children = (
+				2287B5DD117A97BA00DE7B2E /* imagegloss.png */,
+				2287B5DE117A97BA00DE7B2E /* imagestrip.png */,
+				2287B5DF117A97BA00DE7B2E /* longstrip.png */,
+				2287B5E0117A97BA00DE7B2E /* SlotMachine.png */,
+				2287B5E1117A97BA00DE7B2E /* Strip.png */,
+				2287B5D7117A97A900DE7B2E /* SpinWheelViewController.h */,
+				2287B5D8117A97A900DE7B2E /* SpinWheelViewController.m */,
+				2287B5D9117A97A900DE7B2E /* WheelSpinner.h */,
+				2287B5DA117A97A900DE7B2E /* WheelSpinner.m */,
+			);
+			name = SpinWheel;
+			sourceTree = "<group>";
+		};
+		228DE774117A390400E77F61 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				228053BC117A3CE500C66CC8 /* Default.png */,
+				228DE775117A391F00E77F61 /* MachineBackground.png */,
+				228DE776117A391F00E77F61 /* Slot.png */,
+				228DE777117A391F00E77F61 /* SlotShading.png */,
+				228DE778117A391F00E77F61 /* StopBar.png */,
+				224070C2117A8EA7002A2A2D /* StartButton.png */,
+				224070C3117A8EA7002A2A2D /* StartButtonActive.png */,
+				224070C4117A8EA7002A2A2D /* StopButton.png */,
+				224070C5117A8EA7002A2A2D /* StopButtonActive.png */,
+				D5214A2F117AA5D000132858 /* HandleBase.png */,
+				D5214A2D117AA5C600132858 /* HandleBackground.png */,
+				D5214A29117AA5B200132858 /* Ball.png */,
+				D5214A2B117AA5BC00132858 /* Handle.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
 				2235A27011797DD70099FE99 /* Source */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				228DE774117A390400E77F61 /* Graphics */,
 				225D17A91179AA130085D2A4 /* Sounds */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -127,6 +215,7 @@
 				225D17CD1179AB9A0085D2A4 /* CoreAudio.framework */,
 				225D17D71179ABF10085D2A4 /* AVFoundation.framework */,
 				225D17DD1179AC030085D2A4 /* AudioToolbox.framework */,
+				2287B5EF117A97D900DE7B2E /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,7 +264,25 @@
 			files = (
 				225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */,
 				225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */,
-				D57B06FA117A7FF300D041AC /* HandleViewController.xib in Resources */,
+				228DE779117A391F00E77F61 /* MachineBackground.png in Resources */,
+				228DE77A117A391F00E77F61 /* Slot.png in Resources */,
+				228DE77B117A391F00E77F61 /* SlotShading.png in Resources */,
+				228DE77C117A391F00E77F61 /* StopBar.png in Resources */,
+				228053BD117A3CE500C66CC8 /* Default.png in Resources */,
+				224070C6117A8EA7002A2A2D /* StartButton.png in Resources */,
+				224070C7117A8EA7002A2A2D /* StartButtonActive.png in Resources */,
+				224070C8117A8EA7002A2A2D /* StopButton.png in Resources */,
+				224070C9117A8EA7002A2A2D /* StopButtonActive.png in Resources */,
+				2287B5E2117A97BA00DE7B2E /* imagegloss.png in Resources */,
+				2287B5E3117A97BA00DE7B2E /* imagestrip.png in Resources */,
+				2287B5E4117A97BA00DE7B2E /* longstrip.png in Resources */,
+				2287B5E5117A97BA00DE7B2E /* SlotMachine.png in Resources */,
+				2287B5E6117A97BA00DE7B2E /* Strip.png in Resources */,
+				D52149FE117AA41200132858 /* HandleViewController.xib in Resources */,
+				D5214A2A117AA5B200132858 /* Ball.png in Resources */,
+				D5214A2C117AA5BC00132858 /* Handle.png in Resources */,
+				D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */,
+				D5214A30117AA5D000132858 /* HandleBase.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +296,10 @@
 				2235A27711797E5D0099FE99 /* main.m in Sources */,
 				2235A28211797E980099FE99 /* ApplicationDelegate.m in Sources */,
 				225D17811179A8B70085D2A4 /* Motion.m in Sources */,
-				D57B06F9117A7FF300D041AC /* HandleViewController.m in Sources */,
+				22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */,
+				2287B5DB117A97A900DE7B2E /* SpinWheelViewController.m in Sources */,
+				2287B5DC117A97A900DE7B2E /* WheelSpinner.m in Sources */,
+				D52149FF117AA41200132858 /* HandleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
