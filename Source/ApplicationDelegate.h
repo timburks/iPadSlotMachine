@@ -5,7 +5,7 @@
 //  Created by Tim Burks on 4/16/10.
 //
 
-#import "Motion.h"
+#import "HandleViewController.h"
 
 typedef enum  {
 	SlotMachineApplicationRoleUnknown,
@@ -19,16 +19,14 @@ typedef enum  {
 	SlotMachineApplicationRoleMax
 } SlotMachineApplicationRoleType;
 
-@class Motion;
 @class MasterViewController;
 @class SpinWheelViewController;
 
-@interface ApplicationDelegate : NSObject <GKSessionDelegate, MotionDelegate> {
+@interface ApplicationDelegate : NSObject <GKSessionDelegate, HandleViewControllerDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
 	
-	Motion *motion;
 	GKSession *session;
 	
 	// Peer IDs
@@ -48,7 +46,6 @@ typedef enum  {
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, assign) int applicationRole;
 @property (nonatomic, assign) BOOL is_iPad;
-@property (nonatomic, retain) Motion *motion;
 
 @property (nonatomic, retain) GKSession *session;
 

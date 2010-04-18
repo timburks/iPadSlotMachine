@@ -25,7 +25,6 @@ ApplicationDelegate *DELEGATE;
 
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
-@synthesize motion;
 @synthesize session;
 @synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
 @synthesize externalWindow;
@@ -59,10 +58,6 @@ AVAudioPlayer *soundPlayer;
 	backgroundView.frame = mainBounds;
 	[window addSubview:backgroundView];
 	backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-	
-	self.motion = [[[Motion alloc] init] retain];
-    [window addSubview:motion];
-	[self.motion becomeFirstResponder];
 	
 	// display role chooser
 	roleChooserAlert = [[UIAlertView alloc]
@@ -103,8 +98,9 @@ AVAudioPlayer *soundPlayer;
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 	
-	// TODO: Only if we are the handle
-	[motion startMotionDetectionWithDelegate:self];
+	// TEST CODE FOR THE HANDLE
+	HandleViewController *handle = [[HandleViewController alloc] initWithNibName:@"HandleViewController" bundle:nil];
+	[window addSubview:handle.view];
 	
 	return YES;
 }
@@ -268,6 +264,7 @@ NSString *nameForState(GKPeerConnectionState state) {
 	}
 }
 
+
 - (void) sendMessageToReels:(NSString *) message
 {
 	NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];	
@@ -299,12 +296,15 @@ NSString *nameForState(GKPeerConnectionState state) {
 }
 
 #pragma mark -
-#pragma mark MotionDelegate
+#pragma mark Handle Methods
 
-- (void)motionTriggered:(id)sender {
-	// TODO: trigger event
+- (void)handlePulled:(id)sender {
 	NSLog(@"HANDLE PULLED!");
 }
 
+
+- (void)handleButtonPressed:(id)sender {
+	NSLog(@"HANDLE BUTTON PRESSED!");
+}
 
 @end

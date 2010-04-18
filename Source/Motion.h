@@ -11,7 +11,7 @@ typedef enum  {
 - (void)motionTriggered:(id)sender;
 @end
 
-@interface Motion : UIView <UIAccelerometerDelegate> {
+@interface Motion : NSObject <UIAccelerometerDelegate> {
 	id<MotionDelegate> delegate;
     UIAccelerationValue accelerationX;
     UIAccelerationValue accelerationY;

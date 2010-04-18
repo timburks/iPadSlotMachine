@@ -37,6 +37,12 @@
 		22C1CC491179855B003D1424 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C1CC481179855B003D1424 /* GameKit.framework */; };
 		22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E0E3D5117A73DB00A72F62 /* MasterViewController.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		D52149FE117AA41200132858 /* HandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52149FB117AA41200132858 /* HandleViewController.xib */; };
+		D52149FF117AA41200132858 /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D52149FC117AA41200132858 /* HandleViewController.m */; };
+		D5214A2A117AA5B200132858 /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A29117AA5B200132858 /* Ball.png */; };
+		D5214A2C117AA5BC00132858 /* Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2B117AA5BC00132858 /* Handle.png */; };
+		D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2D117AA5C600132858 /* HandleBackground.png */; };
+		D5214A30117AA5D000132858 /* HandleBase.png in Resources */ = {isa = PBXBuildFile; fileRef = D5214A2F117AA5D000132858 /* HandleBase.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +84,13 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D52149FB117AA41200132858 /* HandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandleViewController.xib; sourceTree = "<group>"; };
+		D52149FC117AA41200132858 /* HandleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
+		D52149FD117AA41200132858 /* HandleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
+		D5214A29117AA5B200132858 /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
+		D5214A2B117AA5BC00132858 /* Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Handle.png; sourceTree = "<group>"; };
+		D5214A2D117AA5C600132858 /* HandleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBackground.png; sourceTree = "<group>"; };
+		D5214A2F117AA5D000132858 /* HandleBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HandleBase.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +131,9 @@
 				225D17801179A8B70085D2A4 /* Motion.m */,
 				22E0E3D4117A73DB00A72F62 /* MasterViewController.h */,
 				22E0E3D5117A73DB00A72F62 /* MasterViewController.m */,
+				D52149FC117AA41200132858 /* HandleViewController.m */,
+				D52149FD117AA41200132858 /* HandleViewController.h */,
+				D52149FB117AA41200132858 /* HandleViewController.xib */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -159,6 +175,10 @@
 				224070C3117A8EA7002A2A2D /* StartButtonActive.png */,
 				224070C4117A8EA7002A2A2D /* StopButton.png */,
 				224070C5117A8EA7002A2A2D /* StopButtonActive.png */,
+				D5214A2F117AA5D000132858 /* HandleBase.png */,
+				D5214A2D117AA5C600132858 /* HandleBackground.png */,
+				D5214A29117AA5B200132858 /* Ball.png */,
+				D5214A2B117AA5BC00132858 /* Handle.png */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -258,6 +278,11 @@
 				2287B5E4117A97BA00DE7B2E /* longstrip.png in Resources */,
 				2287B5E5117A97BA00DE7B2E /* SlotMachine.png in Resources */,
 				2287B5E6117A97BA00DE7B2E /* Strip.png in Resources */,
+				D52149FE117AA41200132858 /* HandleViewController.xib in Resources */,
+				D5214A2A117AA5B200132858 /* Ball.png in Resources */,
+				D5214A2C117AA5BC00132858 /* Handle.png in Resources */,
+				D5214A2E117AA5C600132858 /* HandleBackground.png in Resources */,
+				D5214A30117AA5D000132858 /* HandleBase.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +299,7 @@
 				22E0E3D6117A73DB00A72F62 /* MasterViewController.m in Sources */,
 				2287B5DB117A97A900DE7B2E /* SpinWheelViewController.m in Sources */,
 				2287B5DC117A97A900DE7B2E /* WheelSpinner.m in Sources */,
+				D52149FF117AA41200132858 /* HandleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
