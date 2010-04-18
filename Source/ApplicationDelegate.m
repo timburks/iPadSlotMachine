@@ -102,6 +102,8 @@ AVAudioPlayer *soundPlayer;
 	[soundPlayer play];
 	AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 	
+	// TODO: Only if we are the handle
+	[motion startMotionDetectionWithDelegate:self];
 	
 	return YES;
 }
@@ -256,5 +258,14 @@ NSString *nameForState(GKPeerConnectionState state) {
 						  autorelease];
 	[alert show];
 }
+
+#pragma mark -
+#pragma mark MotionDelegate
+
+- (void)motionTriggered:(id)sender {
+	// TODO: trigger event
+	NSLog(@"HANDLE PULLED!");
+}
+
 
 @end

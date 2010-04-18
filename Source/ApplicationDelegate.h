@@ -5,6 +5,8 @@
 //  Created by Tim Burks on 4/16/10.
 //
 
+#import "Motion.h"
+
 typedef enum  {
 	SlotMachineApplicationRoleUnknown,
 	SlotMachineApplicationRoleMaster,
@@ -20,7 +22,7 @@ typedef enum  {
 @class Motion;
 @class MasterViewController;
 
-@interface ApplicationDelegate : NSObject <GKSessionDelegate> {
+@interface ApplicationDelegate : NSObject <GKSessionDelegate, MotionDelegate> {
 	UIWindow *window;
 	int applicationRole;
 	BOOL is_iPad;
