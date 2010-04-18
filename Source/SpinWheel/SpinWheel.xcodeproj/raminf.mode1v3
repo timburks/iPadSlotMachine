@@ -333,7 +333,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>FFF8FA76117ABD5900B0FCD1</string>
+										<string>FFF8FA78117AC06500B0FCD1</string>
 										<key>history</key>
 										<array>
 											<string>FF7720FC1179A82600EB8810</string>
@@ -544,13 +544,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>FFF8FA75117ABD4200B0FCD1</string>
 		<string>FFF8FA71117ABD0F00B0FCD1</string>
 		<string>FFF8FA6A117ABCAD00B0FCD1</string>
 		<string>FF7720AF1179904100EB8810</string>
-		<string>/Users/raminf/Work/Projects/SlotMachine/iPadSlotMachine/Source/SpinWheel/SpinWheel.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/raminf/Work/Projects/SlotMachine/iPadSlotMachine/Source/SpinWheel/SpinWheel.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>504 181 1148 748 0 0 1680 1028 </string>
@@ -767,7 +766,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
