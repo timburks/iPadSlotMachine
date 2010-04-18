@@ -19,6 +19,7 @@
 		2243A1D1117AE25D000CB14C /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CD117AE25D000CB14C /* 3.png */; };
 		2243A1D2117AE25D000CB14C /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CE117AE25D000CB14C /* 2.png */; };
 		2243A1D3117AE25D000CB14C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2243A1CF117AE25D000CB14C /* 1.png */; };
+		224F4DB7117B79E80073D5A4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 224F4DB6117B79E80073D5A4 /* Icon.png */; };
 		225D17811179A8B70085D2A4 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 225D17801179A8B70085D2A4 /* Motion.m */; };
 		225D17AD1179AA530085D2A4 /* LittleFlips6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AC1179AA530085D2A4 /* LittleFlips6.wav */; };
 		225D17AF1179AA5A0085D2A4 /* StartingGate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 225D17AE1179AA5A0085D2A4 /* StartingGate.wav */; };
@@ -79,6 +80,7 @@
 		2243A1CD117AE25D000CB14C /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		2243A1CE117AE25D000CB14C /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		2243A1CF117AE25D000CB14C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		224F4DB6117B79E80073D5A4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		225D177F1179A8B70085D2A4 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
 		225D17801179A8B70085D2A4 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		225D17AC1179AA530085D2A4 /* LittleFlips6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LittleFlips6.wav; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		228DE774117A390400E77F61 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				224F4DB6117B79E80073D5A4 /* Icon.png */,
 				2243A1CC117AE25D000CB14C /* LabelBackground.png */,
 				2243A1CD117AE25D000CB14C /* 3.png */,
 				2243A1CE117AE25D000CB14C /* 2.png */,
@@ -378,6 +381,7 @@
 				2243A1D1117AE25D000CB14C /* 3.png in Resources */,
 				2243A1D2117AE25D000CB14C /* 2.png in Resources */,
 				2243A1D3117AE25D000CB14C /* 1.png in Resources */,
+				224F4DB7117B79E80073D5A4 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +443,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -454,7 +458,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;

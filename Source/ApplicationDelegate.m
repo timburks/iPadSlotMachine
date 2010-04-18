@@ -74,6 +74,7 @@ AVAudioPlayer *soundPlayer;
 	[self.window makeKeyAndVisible];
 	
 	// watch for external screens
+#if 0
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(screenDidConnect:)
 												 name:@"UIScreenDidConnectNotification"
@@ -88,6 +89,7 @@ AVAudioPlayer *soundPlayer;
 			[self addExternalDisplay:[screens objectAtIndex:1]];
 		}
 	}
+#endif
 	
 	// play a sound on startup
 	NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StartingGate" ofType:@"wav"]];
@@ -101,6 +103,7 @@ AVAudioPlayer *soundPlayer;
 	return YES;
 }
 
+#if 0
 - (void) screenDidConnect:(NSNotification *) notification {
 	NSLog(@"notification: %@", notification);
 	UIScreen *newScreen = (UIScreen *) notification.object;
@@ -110,25 +113,26 @@ AVAudioPlayer *soundPlayer;
 - (void) screenDidDisconnect:(NSNotification *) notification {
 	NSLog(@"notification: %@", notification);
 	UIScreen *oldScreen = (UIScreen *) notification.object;
-	if (externalWindow && (externalWindow.screen == oldScreen)) {
+	if (externalWindow && ([externalWindow screen] == oldScreen)) {
 		self.externalWindow = nil;
 	}
 }
 
 - (void) addExternalDisplay:(UIScreen *) newScreen 
 {
-	NSArray *modes = newScreen.availableModes;
+	NSArray *modes = [newScreen availableModes];
 	NSLog(@"screen modes: %@", modes);
-	newScreen.currentMode = [modes objectAtIndex:0];
-	NSLog(@"selecting mode %@", newScreen.currentMode);
+	[newScreen setCurrentMode:[modes objectAtIndex:0]];
+	NSLog(@"selecting mode %@", [newScreen currentMode]);
 	
 	self.externalWindow = [[[UIWindow alloc] 
 							initWithFrame:[newScreen applicationFrame]]
 						   autorelease];
 	externalWindow.backgroundColor = [UIColor blueColor];
-	externalWindow.screen = newScreen;
+	[externalWindow setScreen:newScreen];
 	[externalWindow makeKeyAndVisible];
 }
+#endif
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
 {
