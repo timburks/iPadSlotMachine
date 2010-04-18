@@ -49,7 +49,7 @@
 		self.currentSpin = 0;
 		self.spinAnimation = [CABasicAnimation animationWithKeyPath:@"contentsRect"];
 		self.spinAnimation.removedOnCompletion = NO;
-		self.spinAnimation.fillMode = kCAFillModeForwards;		
+		self.spinAnimation.fillMode = kCAFillModeForwards;
 		self.spinAnimation.duration = 1.0;
 		self.spinAnimation.delegate = self;
 		self.currentDisplayRect = CGRectMake(0.0, 0.0, 1.0, VIEWPORTINCREMENT);		
@@ -144,6 +144,21 @@
 - (void) spinWheel:(NSInteger)count
 {
 	_spinning = YES;
+	
+	// We try to randomize the duration of the animation slightly.
+	// The base animation for running a whole strip from top to bottom is 1 second.
+	// We create a random number between 1 and 20. If it's less than 10, we deduct
+	// 1/100 sec * number from the baseline. If it's more than 10, we add to it (to slow it down).
+	// 
+	
+	BOOL slower = NO;
+	NSInteger durationSeed = (int) random() % 20;
+	if (durationSeed > 10)
+		slower = YES;
+	
+	CGFloat adder = (CGFloat) durationSeed / 100.0;
+	CGFloat newDuration = slower ? 1.0 + adder : 1.0 - adder;
+	self.spinAnimation.duration = newDuration;
 	
 	if (count <= 0) {
 		self.spinMax = (int) (random() % MAXROTATION);
