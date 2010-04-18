@@ -16,18 +16,36 @@ ApplicationDelegate *DELEGATE;
 // connection timeouts
 #define TIMEOUT 60
 
+typedef enum ImagesOnStrip {
+	ImageCherry,
+	ImageApple,
+	ImageBar,
+	ImageOrange,
+	ImageSeven
+} ImagesOnStrip;
+
+typedef enum WinState {
+	WinNothing,
+	WinWin,
+	WinBig,
+	WinJackpot
+} WinState;
+
+
 @interface ApplicationDelegate (Internal)
 - (void) addExternalDisplay:(UIScreen *) newScreen;
 - (void) startConnection;
+- (int) checkForWin:(NSArray*)scores;
 @end
 
 @implementation ApplicationDelegate
 @synthesize window, applicationRole, is_iPad;
 @synthesize session;
-@synthesize masterID, slaveHandleID, slaveHopperID, slaveReels;
+@synthesize masterID, slaveHandleID, slaveHopperID, slaveReels, slaveScores;
 @synthesize externalWindow;
 @synthesize masterViewController, spinWheelViewController, slotMachineHopperViewController, handleViewController;
 @synthesize numberOfReelsCurrentlySpinning;
+
 
 UIAlertView *roleChooserAlert; 
 UIAlertView *componentChooserAlert;
@@ -48,6 +66,7 @@ AVAudioPlayer *soundPlayer;
 	
 	self.numberOfReelsCurrentlySpinning = 0;
 	self.slaveReels = [NSMutableArray array];
+	self.slaveScores = [NSMutableArray array];
 	
 	CGRect mainBounds = [[UIScreen mainScreen] bounds];
 	self.window = [[[UIWindow alloc] initWithFrame:mainBounds] autorelease];
@@ -312,6 +331,10 @@ NSString *nameForState(GKPeerConnectionState state) {
 		// slave reel starts spinning
 		[self.spinWheelViewController doSpinForever:nil];
 		//[self.spinWheelViewController doSpin:nil];
+		
+		// Clear out the score counts
+		//
+		[self.slaveScores removeAllObjects];
 	} 
 	
 	else if ([verb isEqualToString:@"stop"]) {
@@ -348,12 +371,29 @@ NSString *nameForState(GKPeerConnectionState state) {
 	else if ([verb isEqualToString:@"stopped"]) {
 		// a reel sends this to the master along with its index and stopping point
 		self.numberOfReelsCurrentlySpinning--;
+		
+		// NOTE: we assume we get only one score from each slave and we don't care about the
+		// order of reels. If we did, then this should be put into a dictionary instead of an array.
+		//
+		// NSString* reelId = [parts objectAtIndex:1];
+		// NSNumber* stoppedAtNumber = [NSNumber numberWithInt:[[parts objectAtIndex:2] intValue]];
+		//
+		[self.slaveScores addObject:[parts objectAtIndex:2]];
+
 		if (self.numberOfReelsCurrentlySpinning == 0) {
-			// incomplete...
-			[self sendMessage:@"payout jackpot" toPeer:self.slaveHopperID];
+			// All wheels have stopped
+			//
+			int winState = [self checkforWin:self.slaveScores];
+			if (winState == WinJackpot)
+				[self sendMessage:@"payout jackpot" toPeer:self.slaveHopperID];
+			else if (winState == WinWin)
+				[self sendMessage:@"payout win" toPeer:self.slaveHopperID];
+			else if (winState == WinBig)
+				[self sendMessage:@"payout big" toPeer:self.slaveHopperID];
+			else
+				[self sendMessage:@"payout lose" toPeer:self.slaveHopperID];
 		}
 	}
-	
 	else if ([verb isEqualToString:@"payout"]) {
 		// the master sends this to the hopper along with the size of the payout.
 		// valid payouts are "lose" "win" "big" and "jackpot".
@@ -370,6 +410,48 @@ NSString *nameForState(GKPeerConnectionState state) {
 		}
 		[self.slotMachineHopperViewController dropCoins:prize];
 	}
+}
+
+// The values returned by each reel are stored in an array. The values
+// are the numbers returned by each reel.
+//
+// We match the scores to the three levels of win.
+//
+
+- (int) countMatch:(NSArray *)scores
+{
+	// NOTE: we're hard-code assuming there are three spinners here. 
+	// We should redo this so it can recursively take any number of reels.
+	
+	for (NSString* first in scores) {
+		for (NSString *second in scores) {
+			for (NSString *third in scores) {
+				if ([first isEqualToString:second] && [second isEqualToString:third]) {
+					return 3;
+				}
+				if ([first isEqualToString:second] || [first isEqualToString:third] || [second isEqualToString:third])
+					return 2;
+			}
+		}
+	}
+	return 0;
+}
+
+- (int) checkForWin:(NSArray*)scores
+{
+	int result = WinNothing;	
+	int matchCount = [self countMatch:scores];
+	
+	// If it's all match and it's a seven, it's a big win
+	//s
+	if (matchCount == 3 && [[scores objectAtIndex:0] isEqualToString:[NSString stringWithFormat:@"%d", ImageSeven]])		
+		result = WinJackpot;
+	else if (matchCount == 3)	// 3-items match and they're not the '7'
+		result = WinBig;
+	else if (matchCount == 2)	// 2-items match, we don't care which one
+		result = WinWin;
+	
+	return result;
 }
 
 #pragma mark -

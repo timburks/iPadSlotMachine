@@ -37,6 +37,7 @@ typedef enum  {
 	NSString *slaveHandleID;
 	NSString *slaveHopperID;
 	NSMutableArray *slaveReels;
+	NSMutableArray *slaveScores;
 	
 	// external display
 	UIWindow *externalWindow;
@@ -60,6 +61,7 @@ typedef enum  {
 @property (nonatomic, retain) NSString *slaveHandleID;
 @property (nonatomic, retain) NSString *slaveHopperID;
 @property (nonatomic, retain) NSMutableArray *slaveReels;
+@property (nonatomic, retain) NSMutableArray *slaveScores;
 
 @property (nonatomic, retain) UIWindow *externalWindow;
 
