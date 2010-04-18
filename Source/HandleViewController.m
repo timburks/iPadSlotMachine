@@ -10,7 +10,7 @@
 
 @implementation HandleViewController
 
-@synthesize motionDetector, handleButton;
+@synthesize motionDetector, handleButton, handleBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +24,7 @@
 
 - (void)viewDidUnload {
 	self.handleButton = nil;
+	self.handleBar = nil;
 }
 
 
@@ -36,6 +37,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.motionDetector startMotionDetectionWithDelegate:self];
+	
+	handleRect = handleBar.frame;
 }
 
 
@@ -45,6 +48,7 @@
 
 
 - (void)dealloc {
+	[handleBar release];
 	[handleButton release];
 	[motionDetector release];
     [super dealloc];
@@ -78,7 +82,14 @@
 	[UIView setAnimationDuration:0.35];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(didAnimateButton:finished:context:)];
-	[handleButton setTransform:CGAffineTransformMakeScale(2.0, 2.0)];
+	
+	CGAffineTransform transform = CGAffineTransformMakeScale(2.0, 2.0);
+	transform = CGAffineTransformTranslate(transform, 30, 30);
+	[handleButton setTransform:transform];
+	
+	CGRect newRect = CGRectMake(handleRect.origin.x, handleRect.origin.y+30, handleRect.size.width+100, handleRect.size.height-30);
+	handleBar.frame = newRect;
+	
 	[UIView commitAnimations];
 }
 
@@ -88,6 +99,7 @@
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.35];
 	[handleButton setTransform:CGAffineTransformIdentity];
+	handleBar.frame = handleRect;
 	[UIView commitAnimations];
 }
 
